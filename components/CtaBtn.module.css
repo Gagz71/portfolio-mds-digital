@@ -1,0 +1,438 @@
+/* ============================================
+   CTA BUTTON - Base Styles
+   ============================================ */
+
+.ctaBtn {
+  /* Reset & Base */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border: none;
+  text-decoration: none;
+  font-family: 'Orbitron', 'Rajdhani', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+  
+  /* Clip-path pour l'effet tech/futuriste */
+  clip-path: polygon(
+    12px 0,
+    100% 0,
+    100% calc(100% - 12px),
+    calc(100% - 12px) 100%,
+    0 100%,
+    0 12px
+  );
+  
+  /* Accessibilité */
+  -webkit-tap-highlight-color: transparent;
+}
+
+.ctaBtn:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
+/* Ensure text stays above scanline */
+.label,
+.arrow {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+}
+
+/* ============================================
+   Variants: Primary, Secondary, Ghost
+   ============================================ */
+
+/* PRIMARY - Le CTA principal (outline style) */
+.ctaBtn.primary {
+  background: transparent;
+  color: var(--color-cyan, #00ffd2);
+  position: relative;
+  z-index: 1;
+  overflow: visible;
+}
+
+/* Bordure cyan (::before) */
+.ctaBtn.primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--color-cyan, #00ffd2);
+  clip-path: polygon(
+    12px 0,
+    100% 0,
+    100% calc(100% - 12px),
+    calc(100% - 12px) 100%,
+    0 100%,
+    0 12px
+  );
+  z-index: -1;
+  transition: all 0.3s ease;
+}
+
+/* Fond noir, légèrement plus petit pour laisser la bordure visible (::after) */
+.ctaBtn.primary::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  background: var(--color-bg-dark, #07080c);
+  clip-path: polygon(
+    10px 0,
+    100% 0,
+    100% calc(100% - 10px),
+    calc(100% - 10px) 100%,
+    0 100%,
+    0 10px
+  );
+  z-index: -1;
+  transition: background 0.3s ease;
+}
+
+/* Scanline bleu clair au hover */
+.ctaBtn.primary .label::before,
+.ctaBtn.primary .arrow::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -200%;
+  width: 400%;
+  height: 300%;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(80, 210, 255, 0.8) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: opacity 0.3s ease;
+  z-index: 3;
+}
+
+.ctaBtn.primary:hover .label::before {
+  opacity: 1;
+  animation: scanlinePass 0.8s ease-out forwards;
+}
+
+@keyframes scanlinePass {
+  0% {
+    transform: translateY(-100%);
+  }
+  50% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.ctaBtn.primary:hover {
+  color: var(--color-cyan, #00ffd2);
+  transform: translateY(-2px);
+}
+
+.ctaBtn.primary:hover::before {
+  background: var(--color-cyan, #00ffd2);
+  box-shadow: 
+    0 0 30px rgba(0, 255, 210, 0.6),
+    inset 0 0 15px rgba(0, 255, 210, 0.3);
+  animation: pulseBorder 1.5s ease-in-out infinite;
+}
+
+@keyframes pulseBorder {
+  0%, 100% {
+    opacity: 1;
+    filter: brightness(1);
+  }
+  50% {
+    opacity: 0.7;
+    filter: brightness(1.3);
+  }
+}
+
+.ctaBtn.primary:hover::after {
+  background: var(--color-bg-dark, #07080c);
+}
+
+.ctaBtn.primary:active {
+  transform: translateY(0);
+}
+
+/* SECONDARY - Alternative avec bordure BLEUE */
+.ctaBtn.secondary {
+  background: transparent;
+  color: var(--color-blue, #50d2ff);
+  position: relative;
+  z-index: 1;
+  overflow: visible;
+}
+
+/* Créer la bordure avec un élément ::before (la bordure BLEUE) */
+.ctaBtn.secondary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--color-blue, #50d2ff);
+  clip-path: polygon(
+    15px 0,
+    100% 0,
+    100% calc(100% - 15px),
+    calc(100% - 15px) 100%,
+    0 100%,
+    0 15px
+  );
+  z-index: -1;
+  transition: all 0.3s ease;
+}
+
+/* Le fond noir, légèrement plus petit pour laisser la bordure visible */
+.ctaBtn.secondary::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  background: var(--color-bg-dark, #07080c);
+  clip-path: polygon(
+    13px 0,
+    100% 0,
+    100% calc(100% - 13px),
+    calc(100% - 13px) 100%,
+    0 100%,
+    0 13px
+  );
+  z-index: -1;
+  transition: background 0.3s ease;
+}
+
+/* Scanline CYAN au hover */
+.ctaBtn.secondary .label::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -200%;
+  width: 400%;
+  height: 300%;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 255, 210, 0.8) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: opacity 0.3s ease;
+  z-index: 3;
+}
+
+.ctaBtn.secondary:hover .label::before {
+  opacity: 1;
+  animation: scanlinePassSecondary 0.8s ease-out forwards;
+}
+
+@keyframes scanlinePassSecondary {
+  0% {
+    transform: translateY(-100%);
+  }
+  50% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.ctaBtn.secondary:hover {
+  color: var(--color-cyan, #00ffd2);
+  transform: translateY(-2px);
+}
+
+.ctaBtn.secondary:hover::before {
+  background: var(--color-cyan, #00ffd2);
+  box-shadow: 
+    0 0 30px rgba(0, 255, 210, 0.6),
+    inset 0 0 15px rgba(0, 255, 210, 0.3);
+  animation: pulseBorderSecondary 1.5s ease-in-out infinite;
+}
+
+@keyframes pulseBorderSecondary {
+  0%, 100% {
+    opacity: 1;
+    filter: brightness(1);
+  }
+  50% {
+    opacity: 0.7;
+    filter: brightness(1.3);
+  }
+}
+
+.ctaBtn.secondary:hover::after {
+  background: var(--color-bg-dark, #07080c);
+}
+
+.ctaBtn.secondary:active {
+  transform: translateY(0);
+}
+
+/* GHOST - Version minimale */
+.ctaBtn.ghost {
+  background: transparent;
+  color: var(--color-text-secondary, #aaa);
+  border: 1px solid var(--color-border, #333);
+  box-shadow: none;
+}
+
+.ctaBtn.ghost:hover {
+  background: rgba(0, 255, 210, 0.05);
+  border-color: var(--color-cyan, #00ffd2);
+  color: var(--color-cyan, #00ffd2);
+}
+
+/* ============================================
+   Tones: Cyan (default) & Violet
+   ============================================ */
+
+.ctaBtn.violet.primary {
+  background: var(--color-violet, #9d4edd);
+  box-shadow: 0 4px 14px rgba(157, 78, 221, 0.25);
+}
+
+.ctaBtn.violet.primary:hover {
+  background: var(--color-violet, #9d4edd);
+  box-shadow: 
+    0 8px 32px rgba(157, 78, 221, 0.5),
+    0 0 60px rgba(157, 78, 221, 0.3);
+}
+
+.ctaBtn.violet.secondary {
+  color: var(--color-violet, #9d4edd);
+  border-color: var(--color-violet, #9d4edd);
+}
+
+.ctaBtn.violet.secondary:hover {
+  background: rgba(157, 78, 221, 0.1);
+  border-color: #8b3fc9;
+  color: #8b3fc9;
+}
+
+.ctaBtn.violet.ghost:hover {
+  background: rgba(157, 78, 221, 0.05);
+  border-color: var(--color-violet, #9d4edd);
+  color: var(--color-violet, #9d4edd);
+}
+
+/* ============================================
+   Sizes: Small, Medium, Large
+   ============================================ */
+
+.ctaBtn.sm {
+  padding: 12px 24px;
+  font-size: 0.8rem;
+  letter-spacing: 1.5px;
+}
+
+.ctaBtn.md {
+  padding: 18px 40px;
+  font-size: 0.95rem;
+  letter-spacing: 2px;
+}
+
+.ctaBtn.lg {
+  padding: 22px 50px;
+  font-size: 1.05rem;
+  letter-spacing: 2.5px;
+}
+
+/* ============================================
+   Arrow Animation (Primary only)
+   ============================================ */
+
+.ctaBtn.withArrow.primary .arrow {
+  display: inline-block;
+  transition: transform 0.3s ease;
+  font-weight: 400;
+  margin-left: 8px;
+}
+
+.ctaBtn.withArrow.primary:hover .arrow {
+  transform: translateX(4px);
+}
+
+/* ============================================
+   Responsive Mobile
+   ============================================ */
+
+@media (max-width: 768px) {
+  .ctaBtn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .ctaBtn.sm {
+    padding: 14px 24px;
+    font-size: 0.85rem;
+  }
+
+  .ctaBtn.md {
+    padding: 18px 32px;
+    font-size: 0.9rem;
+  }
+
+  .ctaBtn.lg {
+    padding: 20px 40px;
+    font-size: 1rem;
+  }
+
+  /* Sur mobile, réduire le gap */
+  .ctaBtn {
+    gap: 8px;
+  }
+}
+
+/* ============================================
+   Accessibilité - States
+   ============================================ */
+
+.ctaBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Note: Le support prefers-reduced-motion est dans globals.css */
+
+.ctaBtn.loading {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.ctaBtn.loading::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ctaBtn.primary .label::before {
+    animation: none;
+    opacity: 0;
+  }
+}

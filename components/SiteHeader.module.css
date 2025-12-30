@@ -1,0 +1,124 @@
+.header-menu {
+  --cyan: #00ffd2;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(7, 8, 12, 0.7);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 255, 210, 0.14);
+}
+
+.inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.brand {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.92);
+  font-weight: 800;
+  letter-spacing: 0.6px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+.link {
+  text-decoration: none;
+  color: #fefefe;
+  letter-spacing: 0.2px;
+  padding: 8px 6px;
+  border-bottom: 2px solid transparent;
+  transition: color 160ms ease, border-color 160ms ease, text-shadow 160ms ease;
+  padding: 1rem 1.5rem;
+  display: block;
+  transition: all 0.2s ease 0.1s;
+  font-family: "orbitronMedium";
+  text-transform: uppercase;
+}
+
+.link:hover {
+  color: snow;
+  border-color: rgba(0, 255, 210, 0.35);
+  text-shadow: 0 0 12px rgba(0, 255, 210, 0.25);
+  background-color: #00CFAF;
+}
+
+.active {
+  color: #00ffd2;
+  border-color: rgba(0, 255, 210, 0.75);
+  text-shadow: 0 0 16px rgba(0, 255, 210, 0.35);
+}
+
+.header-menu {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  list-style: none;
+  z-index: 1;
+  align-items: center;
+  margin: 0.8em 0;
+  width: unset;
+  clip-path: polygon(
+    1rem 0%,
+    100% 0,
+    100% calc(100% - 1rem),
+    calc(100% - 1rem) 100%,
+    0 100%,
+    0% 1rem
+  );
+  transition: all 0.2s ease 0.1s;
+}
+
+.header-menu::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #00ffd2;
+  z-index: -2;
+}
+
+.header-menu::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #02091a;
+  z-index: -1;
+  -webkit-clip-path: polygon(
+    0.2rem 1.08284rem,
+    1.08284rem 0.2rem,
+    calc(100% - 0.2rem) 0.2rem,
+    calc(100% - 0.2rem) calc(100% - 1.1rem),
+    calc(100% - 1.08284rem) calc(100% - 0.2rem),
+    0.2rem calc(100% - 0.2rem)
+  );
+  clip-path: polygon(
+    0.2rem 1.08284rem,
+    1.08284rem 0.2rem,
+    calc(100% - 0.2rem) 0.2rem,
+    calc(100% - 0.2rem) calc(100% - 1.1rem),
+    calc(100% - 1.08284rem) calc(100% - 0.2rem),
+    0.2rem calc(100% - 0.2rem)
+  );
+}
+
+@media (max-width: 520px) {
+  .inner {
+    flex-wrap: wrap;
+  }
+  .nav {
+    width: 100%;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+  }
+}

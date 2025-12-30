@@ -1,0 +1,115 @@
+/* ============================================
+   SECTION HEADER - Services (et autres sections)
+   ============================================ */
+
+.wrapper {
+  margin-bottom: 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.content {
+  flex: 1;
+  min-width: 300px;
+}
+
+/* Titre principal de section */
+.title {
+  font-family: var(--font-orbitronRegular), 'OrbitronRegular', sans-serif;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 900;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+  position: relative;
+  padding-left: 20px;
+}
+
+/* Trait vertical cyber à gauche du titre */
+.title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--color-cyan, #00ffd2);
+  box-shadow: 0 0 8px rgba(0, 255, 210, 0.5);
+}
+
+/* Numérotation style cyber - dynamique */
+.title[data-number]::after {
+  content: '// ' attr(data-number);
+  position: absolute;
+  top: -8px;
+  left: -2px;
+  font-size: 0.7rem;
+  opacity: 0.5;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+/* Sous-titre / Description */
+.subtitle {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 900px;
+  margin: 0;
+}
+
+/* Lien "Voir plus" optionnel */
+.link {
+  color: var(--color-cyan, #00ffd2);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  padding: 8px 0;
+}
+
+.link:hover {
+  color: #ffffff;
+  transform: translateX(4px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .wrapper {
+    margin-bottom: 32px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .content {
+    min-width: 100%;
+  }
+
+  .title {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+    padding-left: 16px;
+  }
+
+  .title::before {
+    width: 3px;
+  }
+
+  .title::after {
+    font-size: 0.6rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .link {
+    font-size: 0.9rem;
+  }
+}

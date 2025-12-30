@@ -1,0 +1,732 @@
+/* ============================================
+   CONTACT FORM - Cyber Style
+   ============================================ */
+
+.formWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 2rem 1rem;
+}
+
+/* ============================================
+   Card Structure
+   ============================================ */
+
+.glitchCard {
+  background-color: rgba(2, 9, 26, 0.6);
+  width: 100%;
+  max-width: 500px;
+  border: 1px solid rgba(0, 255, 210, 0.2);
+  box-shadow:
+    0 0 20px rgba(0, 255, 210, 0.1),
+    inset 0 0 10px rgba(0, 0, 0, 0.5);
+  overflow: visible;
+  position: relative;
+}
+
+/* Fragment coin supérieur gauche - Double L */
+.glitchCard::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 50px;
+  height: 50px;
+  border-top: 2px solid var(--color-cyan, #00ffd2);
+  border-left: 2px solid var(--color-cyan, #00ffd2);
+  opacity: 0.7;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Fragment coin supérieur droit - Trait horizontal */
+.glitchCard::after {
+  content: '';
+  position: absolute;
+  top: -1px;
+  right: 80px;
+  width: 45px;
+  height: 2px;
+  background: var(--color-cyan, #00ffd2);
+  opacity: 0.5;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid rgba(0, 255, 210, 0.2);
+}
+
+.cardTitle {
+  color: var(--color-cyan, #00ffd2);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.cardTitle svg {
+  width: 1.3em;
+  height: 1.3em;
+  stroke: var(--color-cyan, #00ffd2);
+}
+
+.cardDots {
+  display: flex;
+  gap: 6px;
+}
+
+.cardDots span {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #333;
+}
+
+.cardBody {
+  padding: 2rem 1.5rem;
+  position: relative;
+}
+
+/* Fragment coin inférieur gauche - Trait vertical */
+.cardBody::before {
+  content: '';
+  position: absolute;
+  bottom: 50px;
+  left: -1px;
+  width: 1px;
+  height: 40px;
+  background: var(--color-cyan, #00ffd2);
+  opacity: 0.4;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Fragment coin inférieur droit - L inversé */
+.cardBody::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  right: -1px;
+  width: 40px;
+  height: 40px;
+  border-bottom: 1.5px solid var(--color-cyan, #00ffd2);
+  border-right: 1.5px solid var(--color-cyan, #00ffd2);
+  opacity: 0.5;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* ============================================
+   Input Container
+   ============================================ */
+
+.inputContainer {
+  position: relative;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+/* État d'erreur */
+.inputContainer.hasError .holoInput {
+  border-bottom-color: #ff5252;
+}
+
+.inputContainer.hasError .inputLabel {
+  color: #ff5252;
+}
+
+.inputContainer.hasError .inputBorder {
+  border-color: rgba(255, 82, 82, 0.5);
+}
+
+.inputContainer.hasError .corner {
+  border-color: #ff5252;
+  opacity: 1;
+}
+
+.inputContainer.hasError .inputGlow {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 82, 82, 0.2) 0%,
+    transparent 70%
+  );
+  opacity: 1;
+}
+
+/* Message d'erreur sous l'input */
+.errorText {
+  position: absolute;
+  bottom: -1.5rem;
+  left: 0;
+  color: #ff5252;
+  font-size: 0.8rem;
+  font-weight: 500;
+  animation: slideIn 0.3s ease-out;
+}
+
+/* ============================================
+   Input & Textarea
+   ============================================ */
+
+.holoInput {
+  width: 100%;
+  height: 3.5rem;
+  background: rgba(13, 13, 13, 0.7);
+  border: none;
+  border-bottom: 2px solid #333;
+  outline: none;
+  padding: 0 1rem;
+  color: var(--color-cyan, #00ffd2);
+  font-family: inherit;
+  font-size: 1rem;
+  caret-color: var(--color-cyan, #00ffd2);
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.holoTextarea {
+  height: auto;
+  min-height: 120px;
+  padding: 1rem;
+  resize: vertical;
+}
+
+.holoInput:focus {
+  border-color: transparent;
+  background: rgba(13, 13, 13, 0.9);
+}
+
+.holoInput:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.submitBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ============================================
+   Floating Label
+   ============================================ */
+
+.inputLabel {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.9rem;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  z-index: 11;
+}
+
+.holoInput:focus + .inputLabel,
+.holoInput:not(:placeholder-shown) + .inputLabel {
+  top: -1.5rem;
+  left: 0;
+  font-size: 0.75rem;
+  color: var(--color-cyan, #00ffd2);
+}
+
+/* Glitch effect on focus */
+.holoInput:focus + .inputLabel::before,
+.holoInput:focus + .inputLabel::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.holoInput:focus + .inputLabel::before {
+  color: var(--color-violet, #c600ff);
+  animation: glitchLabel 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.holoInput:focus + .inputLabel::after {
+  color: var(--color-cyan, #00ffd2);
+  animation: glitchLabel 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both;
+}
+
+@keyframes glitchLabel {
+  0% {
+    transform: translate(0);
+    clip-path: inset(0 0 0 0);
+  }
+  20% {
+    transform: translate(-0.2rem, 0.1rem);
+    clip-path: inset(50% 0 20% 0);
+  }
+  40% {
+    transform: translate(0.1rem, -0.1rem);
+    clip-path: inset(20% 0 60% 0);
+  }
+  60% {
+    transform: translate(-0.15rem, 0.1rem);
+    clip-path: inset(80% 0 5% 0);
+  }
+  80% {
+    transform: translate(0.15rem, -0.15rem);
+    clip-path: inset(30% 0 45% 0);
+  }
+  100% {
+    transform: translate(0);
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* ============================================
+   Decorative Elements
+   ============================================ */
+
+.inputBorder,
+.inputScanline,
+.inputGlow,
+.inputCorners,
+.inputDataStream {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.inputBorder {
+  border: 1px solid rgba(0, 255, 210, 0.2);
+  opacity: 0.5;
+  transition: all 0.3s ease;
+}
+
+.holoInput:focus ~ .inputBorder {
+  opacity: 1;
+  border-color: rgba(0, 255, 210, 0.5);
+}
+
+/* Coins */
+.corner {
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid var(--color-cyan, #00ffd2);
+  transition: all 0.3s ease;
+  opacity: 0.5;
+}
+
+.cornerTl {
+  top: -0.3rem;
+  left: -0.3rem;
+  border-right: none;
+  border-bottom: none;
+}
+
+.cornerTr {
+  top: -0.3rem;
+  right: -0.3rem;
+  border-left: none;
+  border-bottom: none;
+}
+
+.cornerBl {
+  bottom: -0.3rem;
+  left: -0.3rem;
+  border-right: none;
+  border-top: none;
+}
+
+.cornerBr {
+  bottom: -0.3rem;
+  right: -0.3rem;
+  border-left: none;
+  border-top: none;
+}
+
+.holoInput:focus ~ .inputCorners .corner {
+  width: 1.25rem;
+  height: 1.25rem;
+  border-width: 3px;
+  opacity: 1;
+}
+
+/* Glow */
+.inputGlow {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 255, 210, 0.2) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.holoInput:focus ~ .inputGlow {
+  opacity: 1;
+}
+
+/* Scanline */
+.inputScanline {
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 255, 210, 0.1) 48%,
+    rgba(0, 255, 210, 0.3) 50%,
+    rgba(0, 255, 210, 0.1) 52%,
+    transparent 100%
+  );
+  opacity: 0;
+}
+
+.holoInput:focus ~ .inputScanline {
+  animation: scanVertical 4s linear infinite;
+}
+
+@keyframes scanVertical {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  25% {
+    opacity: 0.5;
+  }
+  75% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+}
+
+/* Data Stream */
+.inputDataStream {
+  bottom: 2px;
+  top: auto;
+  height: 0.3rem;
+  display: flex;
+  opacity: 0;
+  transition: opacity 0.3s ease 0.1s;
+}
+
+.streamBar {
+  flex-grow: 1;
+  background-color: var(--color-cyan, #00ffd2);
+  transition:
+    transform 0.2s,
+    opacity 0.2s;
+  transform: scaleY(0);
+  transform-origin: bottom;
+}
+
+.holoInput:focus ~ .inputDataStream {
+  opacity: 1;
+}
+
+.holoInput:focus ~ .inputDataStream .streamBar {
+  animation: dataPulse 2s infinite;
+  animation-delay: calc(var(--i) * 0.1s);
+}
+
+@keyframes dataPulse {
+  0%,
+  100% {
+    transform: scaleY(0.2);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scaleY(1);
+    opacity: 0.8;
+  }
+}
+
+/* ============================================
+   Submit Button
+   ============================================ */
+
+/* Messages de feedback */
+.successMessage,
+.errorMessage {
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+  animation: slideIn 0.3s ease-out;
+}
+
+.successMessage {
+  background: rgba(0, 255, 210, 0.1);
+  border: 1px solid rgba(0, 255, 210, 0.5);
+  color: var(--color-cyan, #00ffd2);
+}
+
+.errorMessage {
+  background: rgba(255, 82, 82, 0.1);
+  border: 1px solid rgba(255, 82, 82, 0.5);
+  color: #ff5252;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.submitBtn {
+  width: 75%;
+  margin: 1.5rem auto 0;
+  display: block;
+  padding: 1rem 2rem;
+  background: transparent;
+  border: none;
+  color: var(--color-cyan, #00ffd2);
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+  overflow: visible;
+  
+  /* Coins coupés */
+  clip-path: polygon(
+    15px 0,
+    100% 0,
+    100% calc(100% - 15px),
+    calc(100% - 15px) 100%,
+    0 100%,
+    0 15px
+  );
+}
+
+/* Fragments container */
+.fragments {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.fragment {
+  position: absolute;
+  border: 2px solid var(--color-cyan, #00ffd2);
+  opacity: 0.6;
+  transition: all 0.3s ease;
+}
+
+.fragmentTl {
+  top: -2px;
+  left: -2px;
+  width: 20px;
+  height: 20px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.fragmentBr {
+  bottom: -2px;
+  right: -2px;
+  width: 20px;
+  height: 20px;
+  border-left: none;
+  border-top: none;
+}
+
+.submitBtn:hover .fragment,
+.submitBtn:focus .fragment {
+  width: 30px;
+  height: 30px;
+  opacity: 1;
+  border-width: 3px;
+}
+
+/* La bordure cyan (::before) */
+.submitBtn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--color-cyan, #00ffd2);
+  clip-path: polygon(
+    15px 0,
+    100% 0,
+    100% calc(100% - 15px),
+    calc(100% - 15px) 100%,
+    0 100%,
+    0 15px
+  );
+  z-index: -1;
+  transition: background 0.3s ease;
+}
+
+/* Le fond noir, légèrement plus petit pour laisser la bordure visible (::after) */
+.submitBtn::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  background: var(--color-bg-dark, #07080c);
+  clip-path: polygon(
+    13px 0,
+    100% 0,
+    100% calc(100% - 13px),
+    calc(100% - 13px) 100%,
+    0 100%,
+    0 13px
+  );
+  z-index: -1;
+  transition: background 0.3s ease;
+}
+
+.submitBtn:hover,
+.submitBtn:focus {
+  color: var(--color-cyan, #00ffd2);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+.submitBtn:hover::before,
+.submitBtn:focus::before {
+  background: var(--color-cyan, #00ffd2);
+  animation: pulseBorder 1.5s ease-in-out infinite;
+  box-shadow: 
+    0 0 30px rgba(0, 255, 210, 0.6),
+    inset 0 0 15px rgba(0, 255, 210, 0.3);
+}
+
+@keyframes pulseBorder {
+  0%, 100% {
+    opacity: 1;
+    filter: brightness(1);
+  }
+  50% {
+    opacity: 0.7;
+    filter: brightness(1.3);
+  }
+}
+
+.submitBtn:hover::after,
+.submitBtn:focus::after {
+  background: #07080c;
+}
+
+.submitBtn:active {
+  transform: translateY(0);
+}
+
+.btnText {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+}
+
+/* Scanline sur le texte - BLEU CLAIR */
+.btnText::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -100%;
+  width: 300%;
+  height: 200%;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(80, 210, 255, 0.8) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: opacity 0.3s ease;
+}
+
+.submitBtn:hover .btnText::before {
+  opacity: 1;
+  animation: scanlinePass 0.8s ease-out forwards;
+}
+
+@keyframes scanlinePass {
+  0% {
+    transform: translateY(-100%);
+  }
+  50% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+
+@media (max-width: 768px) {
+  .glitchCard {
+    max-width: 100%;
+  }
+
+  .cardBody {
+    padding: 1.5rem 1rem;
+  }
+
+  .holoInput {
+    font-size: 0.95rem;
+  }
+
+  .inputLabel {
+    font-size: 0.85rem;
+  }
+
+  .submitBtn {
+    font-size: 0.9rem;
+    padding: 0.8rem;
+  }
+}
+
+/* ============================================
+   Accessibility
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .holoInput:focus + .inputLabel::before,
+  .holoInput:focus + .inputLabel::after,
+  .submitBtn:hover::before,
+  .submitBtn:focus::before,
+  .submitBtn:hover::after,
+  .submitBtn:focus::after,
+  .inputScanline,
+  .streamBar {
+    animation: none;
+    opacity: 0;
+  }
+
+  .submitBtn:hover .btnText {
+    opacity: 1;
+  }
+}

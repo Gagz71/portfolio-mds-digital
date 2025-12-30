@@ -1,0 +1,450 @@
+/* ============================================
+   ABOUT CARD - Cyber Profile Style
+   ============================================ */
+
+.cardWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  width: 100%;
+}
+
+/* ============================================
+   Card Structure
+   ============================================ */
+
+.glitchCard {
+  position: relative;
+  background-color: rgba(2, 9, 26, 0.6);
+  width: 100%;
+  max-width: 420px;
+  border: 1px solid rgba(0, 255, 210, 0.2);
+  box-shadow:
+    0 0 24px rgba(0, 255, 210, 0.1),
+    inset 0 0 16px rgba(0, 0, 0, 0.5);
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+}
+
+/* Fragment coin sup droit - Trait horizontal */
+.glitchCard::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  right: 60px;
+  width: 45px;
+  height: 2px;
+  background: var(--color-cyan, #00ffd2);
+  opacity: 0.5;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+/* Fragment coin inf gauche - Trait vertical */
+.glitchCard::after {
+  content: '';
+  position: absolute;
+  bottom: 40px;
+  left: -1px;
+  width: 1px;
+  height: 40px;
+  background: var(--color-cyan, #00ffd2);
+  opacity: 0.4;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+/* Hover effects */
+.glitchCard:hover {
+  border-color: rgba(0, 255, 210, 0.5);
+  box-shadow:
+    0 0 40px rgba(0, 255, 210, 0.2),
+    inset 0 0 20px rgba(0, 0, 0, 0.6);
+}
+
+.glitchCard:hover::before {
+  width: 55px;
+  opacity: 0.8;
+  background: var(--color-blue, #50d2ff);
+}
+
+.glitchCard:hover::after {
+  height: 50px;
+  opacity: 0.7;
+  background: var(--color-blue, #50d2ff);
+}
+
+/* ============================================
+   Header Visual
+   ============================================ */
+
+.cardHeaderVisual {
+  height: 80px;
+  background: linear-gradient(
+      45deg,
+      rgba(0, 255, 210, 0.1),
+      rgba(13, 13, 13, 0.8)
+    ),
+    radial-gradient(circle, rgba(80, 210, 255, 0.05) 0%, transparent 70%);
+  border-bottom: 1px solid rgba(0, 255, 210, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Fragment coin sup gauche du header - Double L */
+.cardHeaderVisual::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 50px;
+  height: 50px;
+  border-top: 2px solid var(--color-cyan, #00ffd2);
+  border-left: 2px solid var(--color-cyan, #00ffd2);
+  opacity: 0.4;
+  transition: all 0.3s ease;
+}
+
+/* Scanline qui traverse au hover */
+.cardHeaderVisual::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(80, 210, 255, 0.3) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: opacity 0.3s ease;
+}
+
+.glitchCard:hover .cardHeaderVisual::after {
+  opacity: 1;
+  animation: scanlinePassCard 1.2s ease-in-out forwards;
+}
+
+@keyframes scanlinePassCard {
+  0% {
+    transform: translateY(-100%);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.glitchCard:hover .cardHeaderVisual::before {
+  width: 60px;
+  height: 60px;
+  opacity: 0.7;
+  border-color: var(--color-blue, #50d2ff);
+}
+
+/* ============================================
+   Avatar avec Initiales
+   ============================================ */
+
+.profileAvatar {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 32px;
+  z-index: 10;
+  width: 110px;
+  height: 110px;
+  background: linear-gradient(135deg, rgba(0, 255, 210, 0.1), rgba(2, 9, 26, 0.95));
+  border-radius: 50%;
+  padding: 4px;
+  box-shadow: 
+    0 0 24px rgba(0, 0, 0, 0.8),
+    0 0 40px rgba(0, 255, 210, 0.2);
+  border: 2px solid rgba(0, 255, 210, 0.4);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.initials {
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: var(--color-cyan, #00ffd2);
+  letter-spacing: 0.05em;
+  font-family: 'Orbitron', 'Rajdhani', sans-serif;
+  text-shadow: 
+    0 0 20px rgba(0, 255, 210, 0.6),
+    0 0 40px rgba(0, 255, 210, 0.3);
+  transition: all 0.4s ease;
+}
+
+.profileAvatar:hover {
+  border-color: var(--color-blue, #50d2ff);
+  box-shadow: 
+    0 0 32px rgba(0, 0, 0, 0.9),
+    0 0 60px rgba(80, 210, 255, 0.4);
+  transform: translateX(-50%) scale(1.05);
+}
+
+.profileAvatar:hover .initials {
+  color: var(--color-blue, #50d2ff);
+  text-shadow: 
+    0 0 25px rgba(80, 210, 255, 0.8),
+    0 0 50px rgba(80, 210, 255, 0.4);
+  transform: scale(1.1);
+}
+
+/* ============================================
+   Card Body
+   ============================================ */
+
+.cardBody {
+  padding: 1.5rem;
+  padding-top: 0;
+  background-color: rgba(2, 9, 26, 0.6);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Fragment coin inf droit du body - L inversé */
+.cardBody::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  right: -1px;
+  width: 40px;
+  height: 40px;
+  border-bottom: 1.5px solid var(--color-cyan, #00ffd2);
+  border-right: 1.5px solid var(--color-cyan, #00ffd2);
+  opacity: 0.3;
+  transition: all 0.3s ease;
+}
+
+.glitchCard:hover .cardBody::after {
+  width: 50px;
+  height: 50px;
+  opacity: 0.6;
+  border-color: var(--color-blue, #50d2ff);
+  border-width: 2px;
+}
+
+/* ============================================
+   Profile Info
+   ============================================ */
+
+.profileInfo {
+  align-items: center;
+  text-align: center;
+  padding-top: 70px;
+  margin-bottom: 1.5rem;
+}
+
+.profileName {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-text, #e5e5e5);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin: 0;
+  position: relative;
+  cursor: pointer;
+  font-family: 'Orbitron', 'Rajdhani', sans-serif;
+  transition: color 0.3s ease;
+}
+
+.profileTitle {
+  font-size: 0.85rem;
+  color: var(--color-cyan, #00ffd2);
+  opacity: 0.8;
+  margin: 0.5rem 0 0 0;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* Effet glitch sur le nom au hover */
+.profileName:hover {
+  color: transparent;
+}
+
+.profileName:hover::before,
+.profileName:hover::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profileName:hover::before {
+  color: var(--color-violet, #c600ff);
+  animation: glitchAnim 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.profileName:hover::after {
+  background-color: rgba(2, 9, 26, 0.6);
+  color: var(--color-cyan, #00ffd2);
+  animation: glitchAnim 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both;
+}
+
+@keyframes glitchAnim {
+  0% {
+    transform: translate(0);
+    clip-path: inset(0 0 0 0);
+  }
+  20% {
+    transform: translate(-0.3rem, 0.15rem);
+    clip-path: inset(50% 0 20% 0);
+  }
+  40% {
+    transform: translate(0.15rem, -0.1rem);
+    clip-path: inset(20% 0 60% 0);
+  }
+  60% {
+    transform: translate(-0.25rem, 0.1rem);
+    clip-path: inset(80% 0 5% 0);
+  }
+  80% {
+    transform: translate(0.25rem, -0.15rem);
+    clip-path: inset(30% 0 45% 0);
+  }
+  100% {
+    transform: translate(0);
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* ============================================
+   Bio Section
+   ============================================ */
+
+.bioSection {
+  width: 100%;
+  padding: 1.25rem;
+  background: rgba(0, 255, 210, 0.03);
+  border: 1px solid rgba(0, 255, 210, 0.15);
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Petit fragment coin sup gauche de la bio */
+.bioSection::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 25px;
+  height: 25px;
+  border-top: 2px solid var(--color-blue, #50d2ff);
+  border-left: 2px solid var(--color-blue, #50d2ff);
+  opacity: 0.5;
+}
+
+.bioText {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.7;
+  margin: 0;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+
+@media (max-width: 768px) {
+  .glitchCard {
+    max-width: 100%;
+    border-radius: 12px;
+  }
+
+  .cardHeaderVisual {
+    height: 70px;
+  }
+
+  .profileAvatar {
+    width: 100px;
+    height: 100px;
+    top: 28px;
+  }
+
+  .initials {
+    font-size: 2.5rem;
+  }
+
+  .profileInfo {
+    padding-top: 65px;
+  }
+
+  .profileName {
+    font-size: 1.5rem;
+  }
+
+  .profileTitle {
+    font-size: 0.8rem;
+  }
+
+  .bioText {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .profileAvatar {
+    width: 90px;
+    height: 90px;
+    top: 25px;
+  }
+
+  .initials {
+    font-size: 2.2rem;
+  }
+
+  .profileInfo {
+    padding-top: 60px;
+  }
+
+  .profileName {
+    font-size: 1.3rem;
+    letter-spacing: 0.1em;
+  }
+
+  .bioSection {
+    padding: 1rem;
+  }
+}
+
+/* ============================================
+   Accessibilité
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .profileAvatar,
+  .initials,
+  .profileName::before,
+  .profileName::after {
+    animation: none;
+    transition: none;
+  }
+}
