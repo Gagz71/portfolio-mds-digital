@@ -1,0 +1,327 @@
+/* ============================================
+   CYBER FRAGMENTS - Tech decorations
+   ============================================ */
+
+.fragments {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* ============================================
+   COINS
+   ============================================ */
+
+/* Coin supérieur gauche */
+.cornerTopLeft {
+  position: absolute;
+  top: -1px;
+  left: -1px;
+}
+
+.cornerTopLeft .line1 {
+  width: 50px;
+  height: 2px;
+  background: var(--color-cyan, #00ffd2);
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.6;
+}
+
+.cornerTopLeft .line2 {
+  width: 2px;
+  height: 50px;
+  background: var(--color-cyan, #00ffd2);
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.6;
+}
+
+.cornerTopLeft .dot {
+  width: 6px;
+  height: 6px;
+  background: var(--color-cyan, #00ffd2);
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  box-shadow: 0 0 8px rgba(0, 255, 210, 0.6);
+}
+
+/* Coin supérieur droit */
+.cornerTopRight {
+  position: absolute;
+  top: -1px;
+  right: -1px;
+}
+
+.cornerTopRight .line1 {
+  width: 40px;
+  height: 2px;
+  background: var(--color-cyan, #00ffd2);
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 0.5;
+}
+
+.cornerTopRight .line2 {
+  width: 2px;
+  height: 35px;
+  background: var(--color-cyan, #00ffd2);
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 0.5;
+}
+
+.cornerTopRight .dot {
+  width: 4px;
+  height: 4px;
+  background: #50d2ff;
+  position: absolute;
+  top: 20px;
+  right: 8px;
+  opacity: 0.8;
+}
+
+/* Coin inférieur gauche */
+.cornerBottomLeft {
+  position: absolute;
+  bottom: -1px;
+  left: -1px;
+}
+
+.cornerBottomLeft .line1 {
+  width: 45px;
+  height: 2px;
+  background: var(--color-cyan, #00ffd2);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  opacity: 0.5;
+}
+
+.cornerBottomLeft .line2 {
+  width: 2px;
+  height: 40px;
+  background: var(--color-cyan, #00ffd2);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  opacity: 0.5;
+}
+
+.cornerBottomLeft .dot {
+  width: 5px;
+  height: 5px;
+  background: #50d2ff;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  opacity: 0.7;
+}
+
+/* Coin inférieur droit */
+.cornerBottomRight {
+  position: absolute;
+  bottom: -1px;
+  right: -1px;
+}
+
+.cornerBottomRight .line1 {
+  width: 40px;
+  height: 1.5px;
+  background: var(--color-cyan, #00ffd2);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  opacity: 0.4;
+}
+
+.cornerBottomRight .line2 {
+  width: 1.5px;
+  height: 40px;
+  background: var(--color-cyan, #00ffd2);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  opacity: 0.4;
+}
+
+.cornerBottomRight .dot {
+  width: 6px;
+  height: 6px;
+  background: var(--color-cyan, #00ffd2);
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  box-shadow: 0 0 8px rgba(0, 255, 210, 0.5);
+}
+
+/* ============================================
+   FRAGMENTS MILIEUX
+   ============================================ */
+
+/* Haut centre */
+.topCenter {
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.topCenter .smallLine {
+  width: 30px;
+  height: 2px;
+  background: var(--color-cyan, #00ffd2);
+  opacity: 0.4;
+  margin-bottom: 4px;
+}
+
+.topCenter .bracket {
+  width: 20px;
+  height: 8px;
+  border-left: 1.5px solid #50d2ff;
+  border-right: 1.5px solid #50d2ff;
+  opacity: 0.3;
+  margin: 0 auto;
+}
+
+/* Bas centre */
+.bottomCenter {
+  position: absolute;
+  bottom: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.bottomCenter .smallLine {
+  width: 25px;
+  height: 1.5px;
+  background: #50d2ff;
+  opacity: 0.4;
+  margin: 0 auto 3px;
+}
+
+.bottomCenter .bracket {
+  width: 18px;
+  height: 6px;
+  border-left: 1.5px solid var(--color-cyan, #00ffd2);
+  border-right: 1.5px solid var(--color-cyan, #00ffd2);
+  opacity: 0.3;
+  margin: 0 auto;
+}
+
+/* Gauche centre */
+.leftCenter {
+  position: absolute;
+  left: -1px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.leftCenter .verticalLine {
+  width: 2px;
+  height: 35px;
+  background: var(--color-cyan, #00ffd2);
+  opacity: 0.4;
+}
+
+.leftCenter .smallDot {
+  width: 4px;
+  height: 4px;
+  background: #50d2ff;
+  margin-top: 8px;
+  opacity: 0.6;
+}
+
+/* Droite centre */
+.rightCenter {
+  position: absolute;
+  right: -1px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.rightCenter .verticalLine {
+  width: 1.5px;
+  height: 30px;
+  background: #50d2ff;
+  opacity: 0.4;
+  margin-left: auto;
+}
+
+.rightCenter .smallDot {
+  width: 3px;
+  height: 3px;
+  background: var(--color-cyan, #00ffd2);
+  margin-top: 6px;
+  margin-left: auto;
+  opacity: 0.5;
+}
+
+/* ============================================
+   DÉTAILS SUPPLÉMENTAIRES
+   ============================================ */
+
+.detail1 {
+  position: absolute;
+  top: 30%;
+  left: 10px;
+  width: 15px;
+  height: 1px;
+  background: #50d2ff;
+  opacity: 0.3;
+}
+
+.detail2 {
+  position: absolute;
+  top: 70%;
+  right: 15px;
+  width: 12px;
+  height: 1px;
+  background: var(--color-cyan, #00ffd2);
+  opacity: 0.3;
+}
+
+.detail3 {
+  position: absolute;
+  top: 20px;
+  right: 30%;
+  width: 8px;
+  height: 8px;
+  border: 1px solid #50d2ff;
+  opacity: 0.2;
+}
+
+.detail4 {
+  position: absolute;
+  bottom: 25px;
+  left: 25%;
+  width: 3px;
+  height: 3px;
+  background: var(--color-cyan, #00ffd2);
+  opacity: 0.4;
+  box-shadow: 0 0 6px rgba(0, 255, 210, 0.4);
+}
+
+/* ============================================
+   ANIMATIONS (optionnel)
+   ============================================ */
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.cornerTopLeft .dot,
+.cornerBottomRight .dot {
+  animation: pulse 2s ease-in-out infinite;
+}

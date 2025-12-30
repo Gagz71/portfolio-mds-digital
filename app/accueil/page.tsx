@@ -6,7 +6,6 @@ import CtaBtn from "@/components/CtaBtn";
 import ServiceCard from "@/components/ServiceCard";
 import SectionHeader from "@/components/SectionHeader";
 import ContactForm from "@/components/ContactForm";
-import AboutCard from "@/components/AboutCard";
 import AboutSection from "@/components/AboutSection";
 import { SERVICES, TECHNOS, PROJETS, ABOUT, CONTACT } from "@/data/content";
 

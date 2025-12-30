@@ -21,10 +21,10 @@ export default function SiteHeader() {
       <div className={styles.inner}>
         <Link href="/accueil" className={styles.brand}>
           <Image
-            src="/brand/logo-256_2.svg"
+            src="/brand/logo-mds-panel.svg"
             alt="MDS Digital"
-            width={200}
-            height={60}
+            width={240}
+            height={72}
             priority
           />
         </Link>

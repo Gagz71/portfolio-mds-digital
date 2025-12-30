@@ -1,0 +1,315 @@
+/* ============================================
+   LEGAL PAGES - Mentions, CGV, Politique
+   ============================================ */
+
+.legalPage {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #020916, #000);
+  padding: 4rem 2rem;
+  
+  /* ✅ Animation slide-in */
+  animation: slideInFromRight 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideInFromRight {
+  0% {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.legalContainer {
+  max-width: 900px;
+  margin: 0 auto;
+  background: rgba(2, 9, 26, 0.6);
+  border: 1px solid rgba(0, 255, 210, 0.2);
+  padding: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Fragment coin sup gauche */
+.legalContainer::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 50px;
+  height: 50px;
+  border-top: 2px solid var(--color-cyan, #00ffd2);
+  border-left: 2px solid var(--color-cyan, #00ffd2);
+  opacity: 0.5;
+  z-index: 10;
+}
+
+/* Fragment coin inf droit */
+.legalContainer::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  right: -1px;
+  width: 40px;
+  height: 40px;
+  border-bottom: 1.5px solid var(--color-cyan, #00ffd2);
+  border-right: 1.5px solid var(--color-cyan, #00ffd2);
+  opacity: 0.4;
+  z-index: 10;
+}
+
+/* Fragment coin sup gauche */
+.legalContainer::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 50px;
+  height: 50px;
+  border-top: 2px solid var(--color-cyan, #00ffd2);
+  border-left: 2px solid var(--color-cyan, #00ffd2);
+  opacity: 0.5;
+}
+
+/* Fragment coin inf droit */
+.legalContainer::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  right: -1px;
+  width: 40px;
+  height: 40px;
+  border-bottom: 1.5px solid var(--color-cyan, #00ffd2);
+  border-right: 1.5px solid var(--color-cyan, #00ffd2);
+  opacity: 0.4;
+}
+
+/* ============================================
+   Back Link
+   ============================================ */
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-cyan, #00ffd2);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  transition: all 0.3s ease;
+  padding: 0.5rem 1rem;
+  border: 1px solid transparent;
+}
+
+.backLink:hover {
+  border-color: rgba(0, 255, 210, 0.3);
+  background: rgba(0, 255, 210, 0.05);
+  transform: translateX(-5px);
+}
+
+/* ============================================
+   Title
+   ============================================ */
+
+.legalTitle {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--color-cyan, #00ffd2);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0 0 2rem 0;
+  font-family: 'Orbitron', 'Rajdhani', sans-serif;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid rgba(0, 255, 210, 0.2);
+}
+
+/* ============================================
+   Content
+   ============================================ */
+
+.legalContent {
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.8;
+  position: relative;
+}
+
+/* ✅ Scan beam qui descend UNIQUEMENT sur le content */
+.legalContent::before {
+  content: '';
+  position: absolute;
+  left: -3rem;
+  right: -3rem;
+  top: -20%;
+  height: 30%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 255, 210, 0),
+    rgba(0, 255, 210, 0.18),
+    rgba(80, 210, 255, 0.1),
+    rgba(0, 255, 210, 0)
+  );
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  animation: scanBeamContainer 2.8s ease-out 0.6s 1 forwards;
+}
+
+@keyframes scanBeamContainer {
+  0% {
+    top: -30%;
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 0.7;
+  }
+  100% {
+    top: 130%;
+    opacity: 0;
+  }
+}
+
+.legalSection {
+  margin-bottom: 3rem;
+}
+
+.legalSection h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-cyan, #00ffd2);
+  margin: 0 0 1rem 0;
+  font-family: 'Orbitron', 'Rajdhani', sans-serif;
+}
+
+.legalSection p {
+  margin: 0 0 1rem 0;
+  font-size: 1rem;
+}
+
+.legalSection ul {
+  margin: 1rem 0;
+  padding-left: 2rem;
+}
+
+.legalSection li {
+  margin-bottom: 0.75rem;
+  position: relative;
+}
+
+.legalSection li::marker {
+  color: var(--color-cyan, #00ffd2);
+}
+
+.legalSection a {
+  color: var(--color-blue, #50d2ff);
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.legalSection a:hover {
+  color: var(--color-cyan, #00ffd2);
+}
+
+.legalSection strong {
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 600;
+}
+
+/* ============================================
+   Warning Box (TODO)
+   ============================================ */
+
+.warning {
+  background: rgba(255, 193, 7, 0.1);
+  border: 2px solid rgba(255, 193, 7, 0.5);
+  border-radius: 4px;
+  padding: 1rem;
+  color: #ffc107;
+  font-weight: 600;
+  margin: 1rem 0;
+}
+
+/* ============================================
+   Placeholders
+   ============================================ */
+
+.placeholder {
+  background: rgba(255, 193, 7, 0.2);
+  color: #ffc107;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  font-weight: 700;
+  font-family: 'Courier New', monospace;
+}
+
+/* ============================================
+   Update Date
+   ============================================ */
+
+.updateDate {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(0, 255, 210, 0.2);
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.9rem;
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+
+@media (max-width: 768px) {
+  .legalPage {
+    padding: 3rem 1rem;
+  }
+
+  .legalContainer {
+    padding: 2rem 1.5rem;
+  }
+
+  .legalTitle {
+    font-size: 2rem;
+  }
+
+  .legalSection h2 {
+    font-size: 1.3rem;
+  }
+
+  .legalSection ul {
+    padding-left: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .legalPage {
+    padding: 2rem 1rem;
+  }
+
+  .legalContainer {
+    padding: 1.5rem 1rem;
+  }
+
+  .legalTitle {
+    font-size: 1.5rem;
+    letter-spacing: 0.05em;
+  }
+
+  .legalSection {
+    margin-bottom: 2rem;
+  }
+
+  .legalSection h2 {
+    font-size: 1.2rem;
+  }
+
+  .legalSection p,
+  .legalSection li {
+    font-size: 0.95rem;
+  }
+}

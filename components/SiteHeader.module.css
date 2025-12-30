@@ -3,6 +3,7 @@
 }
 
 .header {
+  /* Sticky garde implicitement le comportement de relative pour les enfants absolus */
   position: sticky;
   top: 0;
   z-index: 50;
@@ -19,6 +20,36 @@
   align-items: center;
   justify-content: space-between;
   gap: 14px;
+  position: relative;
+}
+
+/* Fragment coin inf gauche du header */
+.inner::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 60px;
+  border-bottom: 2px solid var(--cyan);
+  border-left: 2px solid var(--cyan);
+  opacity: 1;
+  z-index: 60;
+  pointer-events: none;
+}
+
+/* Fragment coin inf droit du header - trait horizontal */
+.inner::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 80px;
+  width: 50px;
+  height: 2px;
+  background: var(--cyan);
+  opacity: 1;
+  z-index: 60;
+  pointer-events: none;
 }
 
 .brand {
