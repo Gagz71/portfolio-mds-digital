@@ -1,5 +1,5 @@
 import Link from "next/link";
-import styles from "../legal.module.css";
+import styles from "../../legal.module.css";
 import CyberFragments from "@/components/CyberFragments";
 
 export default function PolitiqueConfidentialitePage() {
