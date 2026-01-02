@@ -75,7 +75,7 @@ export const PROJETS = [
   },
   {
     name: "Pokédex",
-    description: "Application Pokédex interactive avec recherche, filtres par type et génération, et intégration de l'API PokéAPI. Interface responsive et moderne.",
+    description: "Application Pokédex interactive avec design inspiré des cartes Pokémon de la première génération. Informations complètes en français issu de l'API PokéAPI.",
     stack: "TypeScript • HTML • CSS • Node.js",
     image: "/projets/pokedex/home.png",
     github: "https://github.com/Gagz71/pokedex-html-css-typescript",
@@ -92,7 +92,7 @@ export const PROJETS = [
   },
   {
     name: "li-energies",
-    description: "Site vitrine professionnel pour une entreprise d'énergies renouvelables. Design moderne et présentation claire des services proposés.",
+    description: "Site vitrine moderne développé pour une entreprise du secteur des énergies renouvelables Design moderne et présentation claire des services proposés.",
     stack: "Symfony 5 • Twig • MySQL",
     image: "/projets/li-energies/home.png",
     github: "https://github.com/Gagz71/li-energies",
@@ -104,7 +104,7 @@ export const PROJETS = [
   },
   {
     name: "Kaamelott Chat",
-    description: "Application de chat temps réel avec Socket.io, permettant des conversations instantanées. Thème inspiré de la série Kaamelott.",
+    description: "Application de chat temps réel avec Socket.io, permettant des conversations instantanées avec Perceval De Galles, de la série Kaamelott.",
     stack: "Node.js • Socket.io • HTML • CSS",
     image: "/projets/kaamelott-chat/home.png",
     github: "https://github.com/Gagz71/kaamelott-chat",
