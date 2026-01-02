@@ -1,15 +1,37 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import styles from "./Accueil.module.css";
 import CtaBtn from "@/components/CtaBtn";
 import ServiceCard from "@/components/ServiceCard";
 import SectionHeader from "@/components/SectionHeader";
 import ContactForm from "@/components/ContactForm";
 import AboutSection from "@/components/AboutSection";
-import { SERVICES, TECHNOS, PROJETS, ABOUT, CONTACT } from "@/data/content";
+import ProjectModal from "@/components/ProjectModal";
+import { SERVICES, TECHNOS, PROJETS } from "@/data/content";
 
 export default function AccueilPage() {
+  // State pour la modal
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedProject, setSelectedProject] = useState<{
+    name: string;
+    screenshots: string[];
+  } | null>(null);
+
+  // Fonction pour ouvrir la modal
+  const openModal = (projectName: string, screenshots: string[]) => {
+    setSelectedProject({ name: projectName, screenshots });
+    setIsModalOpen(true);
+  };
+
+  // Fonction pour fermer la modal
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setTimeout(() => setSelectedProject(null), 300);
+  };
+
   return (
     <main className={styles.mainAccueil}>
       {/* ===== HERO ===== */}
@@ -39,7 +61,6 @@ export default function AccueilPage() {
 
         <p className={styles.signature}>Du concept au déploiement</p>
 
-        {/* CTAs optimisés avec hiérarchie claire */}
         <div className={styles.divCta}>
           <CtaBtn
             label="VOIR MES PROJETS"
@@ -81,9 +102,11 @@ export default function AccueilPage() {
 
       {/* ===== TECHNOS ===== */}
       <section id="technos" className={styles.section}>
-        <SectionHeader title="Technos" 
-        subtitle="Stack modern pour des projets rapides et performants"
-        number="02" />
+        <SectionHeader
+          title="Technos"
+          subtitle="Stack modern pour des projets rapides et performants"
+          number="02"
+        />
 
         <div className={styles.technosWrap}>
           {TECHNOS.map((tech) => (
@@ -99,16 +122,35 @@ export default function AccueilPage() {
         <SectionHeader
           title="Projets sélectionnés"
           subtitle="Sites vitrines, apps métier, e-commerce : un aperçu de ce que je peux créer pour vous."
-          link={{ label: "Tout voir →", href: "/projets" }}
           number="03"
         />
 
         <div className={styles.projectGrid}>
           {PROJETS.map((projet) => (
-            <div key={projet.name} className={styles.projectCard}>
-              <div className={styles.projectTitle}>{projet.name}</div>
-              <p className={styles.projectDescription}>{projet.description}</p>
-              <div className={styles.projectStack}>{projet.stack}</div>
+            <div
+              key={projet.name}
+              className={styles.projectCard}
+              onClick={() => openModal(projet.name, projet.screenshots)}
+            >
+              {/* Image du projet */}
+              <div className={styles.projectImageWrapper}>
+                <Image
+                  src={projet.image}
+                  alt={projet.name}
+                  width={600}
+                  height={280}
+                  className={styles.projectImage}
+                  priority={false}
+                />
+                <div className={styles.projectBadge}>Voir le projet</div>
+              </div>
+
+              {/* Contenu */}
+              <div className={styles.projectContent}>
+                <div className={styles.projectTitle}>{projet.name}</div>
+                <p className={styles.projectDescription}>{projet.description}</p>
+                <div className={styles.projectStack}>{projet.stack}</div>
+              </div>
             </div>
           ))}
         </div>
@@ -116,12 +158,13 @@ export default function AccueilPage() {
 
       {/* ===== À PROPOS ===== */}
       <section id="apropos" className={styles.section}>
-        <SectionHeader 
-        title="À propos"
-        subtitle="Développeuse full-stack passionnée par les projets bien faits. Prête à collaborer sur le vôtre" 
-        number="04" />
+        <SectionHeader
+          title="À propos"
+          subtitle="Développeuse full-stack passionnée par les projets bien faits. Prête à collaborer sur le vôtre"
+          number="04"
+        />
 
-         <AboutSection />
+        <AboutSection />
       </section>
 
       {/* ===== CONTACT ===== */}
@@ -133,6 +176,16 @@ export default function AccueilPage() {
         />
         <ContactForm />
       </section>
+
+      {/* ===== MODAL PROJETS ===== */}
+      {selectedProject && (
+        <ProjectModal
+          isOpen={isModalOpen}
+          onClose={closeModal}
+          projectName={selectedProject.name}
+          screenshots={selectedProject.screenshots}
+        />
+      )}
     </main>
   );
 }

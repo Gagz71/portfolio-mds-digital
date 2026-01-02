@@ -1,5 +1,4 @@
 // ✅ Toutes les données du portfolio centralisées ici
-// Plus besoin de les mettre directement dans le JSX !
 
 export const SERVICES = [
   {
@@ -47,32 +46,67 @@ export const TECHNOS = [
 
 export const PROJETS = [
   {
-    name: "Projet A",
-    description: "Description courte (on mettra les vrais contenus après).",
-    stack: "Next.js • UI moderne • Déploiement",
+    name: "Kaizoku Store",
+    description: "E-commerce fullstack avec dashboard admin complet, gestion CRUD des produits, authentification JWT et interface utilisateur moderne. Thème anime/manga.",
+    stack: "Node.js • Express • React • MySQL • JWT",
+    image: "/projets/kaizoku-store/home.png",
+    screenshots: [
+      "/projets/kaizoku-store/home.png",
+      "/projets/kaizoku-store/auth.png",
+      "/projets/kaizoku-store/signup.png",
+      "/projets/kaizoku-store/dashboard.png",
+      "/projets/kaizoku-store/products.png",
+    ],
   },
   {
-    name: "Projet B",
-    description: "Description courte (on mettra les vrais contenus après).",
-    stack: "React • Firebase • Auth/DB",
+    name: "MyMomsBox",
+    description: "Plateforme e-commerce de box mensuelles avec paiement Stripe intégré, système d'abonnements récurrents et gestion complète des commandes.",
+    stack: "Symfony 5 • Twig • MySQL • Stripe",
+    image: "/projets/mymomsbox/home.png",
+    screenshots: [
+      "/projets/mymomsbox/home.png",
+      "/projets/mymomsbox/subscriptions.png",
+      "/projets/mymomsbox/checkout.png",
+      "/projets/mymomsbox/products.png",
+      "/projets/mymomsbox/account.png",
+    ],
   },
   {
-    name: "Projet C",
-    description: "Description courte (on mettra les vrais contenus après).",
-    stack: "Mobile • Expo • UX simple",
+    name: "Pokédex",
+    description: "Application Pokédex interactive avec recherche, filtres par type et génération, et intégration de l'API PokéAPI. Interface responsive et moderne.",
+    stack: "TypeScript • HTML • CSS • Node.js",
+    image: "/projets/pokedex/home.png",
+    screenshots: [
+      "/projets/pokedex/home.png",
+      "/projets/pokedex/search.png",
+      "/projets/pokedex/back.png",
+      "/projets/pokedex/details.png",
+      "/projets/pokedex/favorites.png",
+      "/projets/pokedex/front.png",
+      "/projets/pokedex/stats.png",
+      "/projets/pokedex/evolution.png",
+    ],
+  },
+  {
+    name: "li-energies",
+    description: "Site vitrine professionnel pour une entreprise d'énergies renouvelables. Design moderne et présentation claire des services proposés.",
+    stack: "Symfony 5 • Twig • MySQL",
+    image: "/projets/li-energies/home.png",
+    screenshots: [
+      "/projets/li-energies/home.png",
+      "/projets/li-energies/services.png",
+      "/projets/li-energies/process.png",
+    ],
+  },
+  {
+    name: "Kaamelott Chat",
+    description: "Application de chat temps réel avec Socket.io, permettant des conversations instantanées. Thème inspiré de la série Kaamelott.",
+    stack: "Node.js • Socket.io • HTML • CSS",
+    image: "/projets/kaamelott-chat/home.png",
+    screenshots: [
+      "/projets/kaamelott-chat/home.png",
+      "/projets/kaamelott-chat/chat.png",
+      "/projets/kaamelott-chat/mobile_perceval.png",
+    ],
   },
 ] as const;
-
-export const ABOUT = {
-  intro:
-    "Derrière MDS Digital : une développeuse web & mobile basée en Saône-et-Loire. Objectif : créer des solutions simples, fiables et performantes, avec une attention particulière à l'UX, à la qualité du code et au déploiement.",
-  detail:
-    "Besoin d'un site vitrine, d'une application ou d'un outil interne ? L'idée est de livrer quelque chose d'utile, clair et maintenable — pas juste \"un site\".",
-} as const;
-
-export const CONTACT = {
-  title: "Un projet web ou mobile ?",
-  subtitle: "On échange 10 minutes et une direction claire ressort.",
-  ctaLabel: "CONTACT →",
-  ctaHref: "/contact",
-} as const;

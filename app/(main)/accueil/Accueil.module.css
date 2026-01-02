@@ -359,41 +359,245 @@
    PROJETS
    ============================================ */
 
+/* ============================================
+   PROJETS - Version améliorée avec images
+   ============================================ */
+
 .projectGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 14px;
-  margin-top: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 32px;
+  margin-top: 40px;
 }
 
 .projectCard {
-  background: rgba(2, 9, 26, 0.35);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 16px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background: rgba(2, 9, 26, 0.6);
+  border: 1px solid rgba(0, 255, 210, 0.2);
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .projectCard:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 20px rgba(0, 255, 210, 0.1);
+  transform: translateY(-8px);
+  border-color: rgba(0, 255, 210, 0.5);
+  box-shadow: 
+    0 8px 30px rgba(0, 255, 210, 0.2),
+    0 0 40px rgba(0, 255, 210, 0.1);
+}
+
+/* Image container */
+.projectImageWrapper {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.projectImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.projectCard:hover .projectImage {
+  transform: scale(1.08);
+}
+
+/* Overlay gradient au hover */
+.projectImageWrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 255, 210, 0.15) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.projectCard:hover .projectImageWrapper::after {
+  opacity: 1;
+}
+
+/* Badge "Voir le projet" qui apparaît au hover */
+.projectBadge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  background: rgba(0, 255, 210, 0.95);
+  color: #020916;
+  padding: 12px 24px;
+  font-weight: 900;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: 10;
+  pointer-events: none;
+  box-shadow: 0 0 20px rgba(0, 255, 210, 0.6);
+}
+
+.projectCard:hover .projectBadge {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Content section */
+.projectContent {
+  padding: 20px;
+  background: rgba(2, 9, 26, 0.8);
+  position: relative;
+}
+
+/* Fragment coin supérieur gauche */
+.projectContent::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border-top: 2px solid rgba(0, 255, 210, 0.4);
+  border-left: 2px solid rgba(0, 255, 210, 0.4);
+  transition: all 0.3s ease;
+}
+
+.projectCard:hover .projectContent::before {
+  width: 30px;
+  height: 30px;
+  border-color: rgba(0, 255, 210, 0.8);
+}
+
+/* Fragment coin inférieur droit */
+.projectContent::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  border-bottom: 2px solid rgba(0, 255, 210, 0.4);
+  border-right: 2px solid rgba(0, 255, 210, 0.4);
+  transition: all 0.3s ease;
+}
+
+.projectCard:hover .projectContent::after {
+  width: 30px;
+  height: 30px;
+  border-color: rgba(0, 255, 210, 0.8);
 }
 
 .projectTitle {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.95);
   font-weight: 900;
+  font-size: 20px;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+  transition: color 0.3s ease;
+}
+
+.projectCard:hover .projectTitle {
+  color: rgba(0, 255, 210, 0.95);
 }
 
 .projectDescription {
-  margin-top: 8px;
-  color: rgba(255, 255, 255, 0.65);
-  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  font-size: 14px;
+  margin-bottom: 16px;
 }
 
 .projectStack {
-  margin-top: 10px;
-  color: rgba(80, 210, 255, 0.9);
-  font-weight: 900;
-  font-size: 13px;
+  color: rgba(80, 210, 255, 0.85);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .projectGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .projectImageWrapper {
+    height: 240px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .projectGrid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-top: 32px;
+  }
+
+  .projectImageWrapper {
+    height: 220px;
+  }
+
+  .projectContent {
+    padding: 16px;
+  }
+
+  .projectTitle {
+    font-size: 18px;
+  }
+
+  .projectBadge {
+    font-size: 12px;
+    padding: 10px 20px;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITÉ
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .projectCard,
+  .projectImage,
+  .projectBadge,
+  .projectContent::before,
+  .projectContent::after,
+  .projectTitle {
+    transition: none;
+    animation: none;
+  }
+
+  .projectCard:hover {
+    transform: none;
+  }
+
+  .projectCard:hover .projectImage {
+    transform: none;
+  }
+
+  .projectCard:hover .projectBadge {
+    transform: translate(-50%, -50%);
+  }
 }
 
 /* ============================================
