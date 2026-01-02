@@ -50,6 +50,7 @@ export const PROJETS = [
     description: "E-commerce fullstack avec dashboard admin complet, gestion CRUD des produits, authentification JWT et interface utilisateur moderne. Thème anime/manga.",
     stack: "Node.js • Express • React • MySQL • JWT",
     image: "/projets/kaizoku-store/home.png",
+    github: "https://github.com/Gagz71/Kaizoku-store",
     screenshots: [
       "/projets/kaizoku-store/home.png",
       "/projets/kaizoku-store/auth.png",
@@ -63,6 +64,7 @@ export const PROJETS = [
     description: "Plateforme e-commerce de box mensuelles avec paiement Stripe intégré, système d'abonnements récurrents et gestion complète des commandes.",
     stack: "Symfony 5 • Twig • MySQL • Stripe",
     image: "/projets/mymomsbox/home.png",
+    github: "https://github.com/Gagz71/sf5MyMomsBox",
     screenshots: [
       "/projets/mymomsbox/home.png",
       "/projets/mymomsbox/subscriptions.png",
@@ -76,6 +78,7 @@ export const PROJETS = [
     description: "Application Pokédex interactive avec recherche, filtres par type et génération, et intégration de l'API PokéAPI. Interface responsive et moderne.",
     stack: "TypeScript • HTML • CSS • Node.js",
     image: "/projets/pokedex/home.png",
+    github: "https://github.com/Gagz71/pokedex-html-css-typescript",
     screenshots: [
       "/projets/pokedex/home.png",
       "/projets/pokedex/search.png",
@@ -92,6 +95,7 @@ export const PROJETS = [
     description: "Site vitrine professionnel pour une entreprise d'énergies renouvelables. Design moderne et présentation claire des services proposés.",
     stack: "Symfony 5 • Twig • MySQL",
     image: "/projets/li-energies/home.png",
+    github: "https://github.com/Gagz71/li-energies",
     screenshots: [
       "/projets/li-energies/home.png",
       "/projets/li-energies/services.png",
@@ -103,6 +107,7 @@ export const PROJETS = [
     description: "Application de chat temps réel avec Socket.io, permettant des conversations instantanées. Thème inspiré de la série Kaamelott.",
     stack: "Node.js • Socket.io • HTML • CSS",
     image: "/projets/kaamelott-chat/home.png",
+    github: "https://github.com/Gagz71/kaamelott-chat",
     screenshots: [
       "/projets/kaamelott-chat/home.png",
       "/projets/kaamelott-chat/chat.png",

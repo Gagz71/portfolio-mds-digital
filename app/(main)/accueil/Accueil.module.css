@@ -360,14 +360,22 @@
    ============================================ */
 
 /* ============================================
-   PROJETS - Version améliorée avec images
+   PROJETS - Grille 2 colonnes centrée
    ============================================ */
 
 .projectGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 32px;
   margin-top: 40px;
+}
+
+/* Centrer la dernière card si nombre impair */
+.projectGrid > *:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+  max-width: 600px;
+  width: 100%;
+  justify-self: center;
 }
 
 .projectCard {
@@ -378,6 +386,7 @@
   cursor: pointer;
   transition: all 0.4s ease;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  width: 100%;
 }
 
 .projectCard:hover {
@@ -526,8 +535,54 @@
   font-size: 12px;
   letter-spacing: 0.5px;
   text-transform: uppercase;
-  padding-top: 12px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ============================================
+   BOUTON GITHUB
+   ============================================ */
+
+.projectLinks {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.githubBtn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: rgba(2, 9, 26, 0.8);
+  border: 2px solid rgba(0, 255, 210, 0.4);
+  color: rgba(0, 255, 210, 0.9);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  z-index: 20;
+}
+
+.githubBtn:hover {
+  background: rgba(0, 255, 210, 0.15);
+  border-color: rgba(0, 255, 210, 0.8);
+  color: #00ffd2;
+  box-shadow: 0 0 20px rgba(0, 255, 210, 0.3);
+  transform: translateY(-2px);
+}
+
+.githubIcon {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
 }
 
 /* ============================================
@@ -537,12 +592,15 @@
 /* Tablet */
 @media (max-width: 1024px) {
   .projectGrid {
-    grid-template-columns: repeat(2, 1fr);
     gap: 24px;
   }
 
   .projectImageWrapper {
     height: 240px;
+  }
+
+  .projectGrid > *:last-child:nth-child(odd) {
+    max-width: 100%;
   }
 }
 
@@ -552,6 +610,11 @@
     grid-template-columns: 1fr;
     gap: 24px;
     margin-top: 32px;
+  }
+
+  .projectGrid > *:last-child:nth-child(odd) {
+    grid-column: auto;
+    max-width: 100%;
   }
 
   .projectImageWrapper {
@@ -570,6 +633,11 @@
     font-size: 12px;
     padding: 10px 20px;
   }
+
+  .githubBtn {
+    padding: 10px 16px;
+    font-size: 12px;
+  }
 }
 
 /* ============================================
@@ -582,7 +650,8 @@
   .projectBadge,
   .projectContent::before,
   .projectContent::after,
-  .projectTitle {
+  .projectTitle,
+  .githubBtn {
     transition: none;
     animation: none;
   }
@@ -597,6 +666,10 @@
 
   .projectCard:hover .projectBadge {
     transform: translate(-50%, -50%);
+  }
+
+  .githubBtn:hover {
+    transform: none;
   }
 }
 

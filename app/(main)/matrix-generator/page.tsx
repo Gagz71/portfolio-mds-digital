@@ -25,8 +25,8 @@ type Config = {
 
 const DEFAULT: Config = {
   message: "MDSDIGITAL",
-  foregroundHex: "#50d2ff",
-  backgroundHex: "#07080c",
+  foregroundHex: "#0F0", // Vert Matrix
+  backgroundHex: "#000000", // Fond noir
 
   speedRowsPerSec: 18,
   cell: 18,
@@ -44,8 +44,8 @@ const DEFAULT: Config = {
 };
 
 export default function MatrixGeneratorPage() {
-  // 🔥 pas de localStorage : un refresh remettra DEFAULT automatiquement
   const [cfg, setCfg] = useState<Config>(DEFAULT);
+  const [isOpen, setIsOpen] = useState(true); // État pour le toggle
 
   // On nettoie le message (pour éviter caractères chelous)
   const cleanedMessage = useMemo(() => {
@@ -77,9 +77,48 @@ export default function MatrixGeneratorPage() {
         trailDecay={cfg.trailDecay}
       />
 
-      {/* UI */}
-      <div style={{ position: "relative", zIndex: 1, padding: 16, maxWidth: 680 }}>
-        <Panel title="Matrix Generator (live)">
+      {/* BOUTON TOGGLE */}
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        style={{
+          position: "fixed",
+          top: 120, // Sous le menu
+          left: isOpen ? 700 : 20, // Se déplace avec le panneau
+          zIndex: 3,
+          width: 44,
+          height: 44,
+          borderRadius: "50%",
+          border: "2px solid rgba(0,255,0,0.5)",
+          background: "rgba(0,0,0,0.9)",
+          color: "#0F0",
+          fontSize: 20,
+          cursor: "pointer",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          boxShadow: "0 0 20px rgba(0,255,0,0.3)",
+          transition: "left 0.3s ease, transform 0.2s ease",
+        }}
+        onMouseEnter={(e) => e.currentTarget.style.transform = "scale(1.1)"}
+        onMouseLeave={(e) => e.currentTarget.style.transform = "scale(1)"}
+      >
+        {isOpen ? "❌" : "⚙️"}
+      </button>
+
+      {/* UI - Panneau avec scroll, commence SOUS le menu */}
+      <div style={{ 
+        position: "fixed",
+        left: isOpen ? 0 : -700, // Slide depuis la gauche
+        top: 100, // COMMENCE SOUS LE MENU
+        bottom: 0,
+        zIndex: 2, 
+        padding: 16, 
+        maxWidth: 680,
+        transition: "left 0.3s ease",
+        overflowY: "auto", // Scroll si besoin
+        overflowX: "hidden",
+      }}>
+        <Panel title="Matrix Generator (live)" subtitle="Amusez-vous à configurer la Matrice">
           <Row>
             <label style={label()}>
               Texte (max 30)
@@ -101,7 +140,7 @@ export default function MatrixGeneratorPage() {
               onChange={(v) => setCfg((s) => ({ ...s, foregroundHex: v }))}
             />
             <ColorPick
-              title="Couleur fond"
+              title="Couleur de fond"
               value={cfg.backgroundHex}
               onChange={(v) => setCfg((s) => ({ ...s, backgroundHex: v }))}
             />
@@ -131,40 +170,7 @@ export default function MatrixGeneratorPage() {
 
           <Row>
             <Slider
-              title={`Délai start (ms): ${cfg.startDelayMs}`}
-              min={0}
-              max={1000}
-              step={20}
-              value={cfg.startDelayMs}
-              onChange={(v) => setCfg((s) => ({ ...s, startDelayMs: v }))}
-            />
-          </Row>
-
-          <Row>
-            <Slider
-              title={`Colonnes progressives (ms): ${cfg.columnSpawnMs}`}
-              min={15}
-              max={150}
-              step={5}
-              value={cfg.columnSpawnMs}
-              onChange={(v) => setCfg((s) => ({ ...s, columnSpawnMs: v }))}
-            />
-          </Row>
-
-          <Row>
-            <Slider
-              title={`Message hop (ms): ${cfg.messageHopMs}`}
-              min={200}
-              max={3000}
-              step={100}
-              value={cfg.messageHopMs}
-              onChange={(v) => setCfg((s) => ({ ...s, messageHopMs: v }))}
-            />
-          </Row>
-
-          <Row>
-            <Slider
-              title={`Message boost: ${cfg.messageBoost.toFixed(2)} (0 = ultra caché)`}
+              title={`Visibilité du texte: ${cfg.messageBoost.toFixed(2)} (0 = ultra caché)`}
               min={0}
               max={0.25}
               step={0.01}
@@ -174,58 +180,11 @@ export default function MatrixGeneratorPage() {
           </Row>
 
           <Row>
-            <Slider
-              title={`Base alpha: ${cfg.baseAlpha.toFixed(2)} (évite trous)`}
-              min={0}
-              max={0.22}
-              step={0.01}
-              value={cfg.baseAlpha}
-              onChange={(v) => setCfg((s) => ({ ...s, baseAlpha: v }))}
-            />
-          </Row>
-
-          <Row>
-            <Slider
-              title={`Head alpha: ${cfg.headAlpha.toFixed(2)}`}
-              min={0.2}
-              max={1}
-              step={0.01}
-              value={cfg.headAlpha}
-              onChange={(v) => setCfg((s) => ({ ...s, headAlpha: v }))}
-            />
-          </Row>
-
-          <Row>
-            <Slider
-              title={`Trail alpha: ${cfg.trailAlpha.toFixed(2)}`}
-              min={0.1}
-              max={0.9}
-              step={0.01}
-              value={cfg.trailAlpha}
-              onChange={(v) => setCfg((s) => ({ ...s, trailAlpha: v }))}
-            />
-          </Row>
-
-          <Row>
-            <Slider
-              title={`Trail decay: ${cfg.trailDecay.toFixed(2)} (plus proche de 1 = plus long)`}
-              min={0.85}
-              max={0.97}
-              step={0.01}
-              value={cfg.trailDecay}
-              onChange={(v) => setCfg((s) => ({ ...s, trailDecay: v }))}
-            />
-          </Row>
-
-          <Row>
             <button onClick={() => setCfg(DEFAULT)} style={btnGhost()}>
-              Reset (DEFAULT)
+              Réinitialiser
             </button>
           </Row>
 
-          <div style={{ marginTop: 8, fontSize: 12, opacity: 0.75 }}>
-            ✅ Un refresh remet tout par défaut (pas de sauvegarde).
-          </div>
         </Panel>
       </div>
     </main>
@@ -233,7 +192,7 @@ export default function MatrixGeneratorPage() {
 }
 
 /* UI helpers */
-function Panel({ title, children }: { title: string; children: React.ReactNode }) {
+function Panel({ title, subtitle, children }: { title: string; subtitle: string; children: React.ReactNode }) {
   return (
     <div
       style={{
@@ -246,6 +205,7 @@ function Panel({ title, children }: { title: string; children: React.ReactNode }
     >
       <div style={{ fontSize: 14, letterSpacing: ".12em", textTransform: "uppercase", fontWeight: 800 }}>
         {title}
+        <p>{subtitle}</p>
       </div>
       <div style={{ marginTop: 12, display: "grid", gap: 12 }}>{children}</div>
     </div>
