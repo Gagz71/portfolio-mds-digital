@@ -127,6 +127,8 @@ export default function MatrixRain({
     }
 
     function resize() {
+      if (!canvas) return; // check null
+      if (!ctx) return; // check null
       dpr = Math.max(1, Math.floor(window.devicePixelRatio || 1)); // dpr retina
 
       width = fullscreen
@@ -203,6 +205,7 @@ export default function MatrixRain({
     } // fin injectMessage
 
     function draw() {
+      if (!ctx) return; // check null
       ctx.fillStyle = `rgb(${br},${bg},${bb})`; // fond
       ctx.fillRect(0, 0, width, height); // rempli fond
 

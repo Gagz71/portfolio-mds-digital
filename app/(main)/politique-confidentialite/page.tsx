@@ -8,7 +8,7 @@ export default function PolitiqueConfidentialitePage() {
       <div className={styles.legalContainer}>
         <CyberFragments />
         <Link href="/accueil#top" className={styles.backLink}>
-          ← Retour à l'accueil
+          ← Retour à l&apos;accueil
         </Link>
 
         <h1 className={styles.legalTitle}>Politique de Confidentialité</h1>
@@ -18,7 +18,7 @@ export default function PolitiqueConfidentialitePage() {
           <section className={styles.legalSection}>
             <h2>1. Introduction</h2>
             <p>
-              MDS Digital (ci-après "nous", "notre", "le Prestataire"), immatriculée sous le SIRET 999 127 822 00016, accorde une grande importance 
+              MDS Digital (ci-après &quot;nous&quot;, &quot;notre&quot;, &quot;le Prestataire&quot;), immatriculée sous le SIRET 999 127 822 00016, accorde une grande importance 
               à la protection de vos données personnelles.
             </p>
             <p>
@@ -88,7 +88,7 @@ export default function PolitiqueConfidentialitePage() {
             </p>
             <ul>
               <li><strong>MDS Digital :</strong> pour traiter votre demande</li>
-              <li><strong>Resend (service d'envoi d'emails) :</strong> pour transmettre les messages du formulaire de contact</li>
+              <li><strong>Resend (service d&apos;envoi d&apos;emails) :</strong> pour transmettre les messages du formulaire de contact</li>
             </ul>
             <p>
               Nous ne transmettons vos données à aucun autre tiers, sauf obligation légale.
@@ -105,7 +105,7 @@ export default function PolitiqueConfidentialitePage() {
               <li><strong>Clients :</strong> 10 ans après la fin de la relation contractuelle (obligations comptables)</li>
             </ul>
             <p>
-              À l'issue de ces délais, vos données sont supprimées ou anonymisées.
+              À l&apos;issue de ces délais, vos données sont supprimées ou anonymisées.
             </p>
           </section>
 
@@ -115,21 +115,21 @@ export default function PolitiqueConfidentialitePage() {
               Conformément au RGPD, vous disposez des droits suivants concernant vos données personnelles :
             </p>
             <ul>
-              <li><strong>Droit d'accès :</strong> obtenir une copie de vos données</li>
+              <li><strong>Droit d&apos;accès :</strong> obtenir une copie de vos données</li>
               <li><strong>Droit de rectification :</strong> corriger des données inexactes</li>
-              <li><strong>Droit à l'effacement :</strong> demander la suppression de vos données</li>
-              <li><strong>Droit d'opposition :</strong> vous opposer au traitement de vos données</li>
+              <li><strong>Droit à l&apos;effacement :</strong> demander la suppression de vos données</li>
+              <li><strong>Droit d&apos;opposition :</strong> vous opposer au traitement de vos données</li>
               <li><strong>Droit à la limitation :</strong> limiter le traitement de vos données</li>
               <li><strong>Droit à la portabilité :</strong> récupérer vos données dans un format structuré</li>
             </ul>
             <p>
-              Pour exercer vos droits, contactez-nous à l'adresse : <strong>contact@mds-digital.fr</strong>
+              Pour exercer vos droits, contactez-nous à l&apos;adresse : <strong>contact@mds-digital.fr</strong>
             </p>
             <p>
               Nous nous engageons à répondre à votre demande dans un délai de <strong>1 mois</strong> maximum.
             </p>
             <p>
-              Vous disposez également du droit d'introduire une réclamation auprès de la CNIL : 
+              Vous disposez également du droit d&apos;introduire une réclamation auprès de la CNIL : 
               <a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer">www.cnil.fr</a>
             </p>
           </section>
@@ -141,9 +141,9 @@ export default function PolitiqueConfidentialitePage() {
               vos données personnelles contre :
             </p>
             <ul>
-              <li>L'accès non autorisé</li>
+              <li>L&apos;accès non autorisé</li>
               <li>La perte ou la destruction</li>
-              <li>L'utilisation, la divulgation ou la modification non autorisée</li>
+              <li>L&apos;utilisation, la divulgation ou la modification non autorisée</li>
             </ul>
             <p>
               Nos mesures de sécurité incluent :
@@ -159,7 +159,7 @@ export default function PolitiqueConfidentialitePage() {
           <section className={styles.legalSection}>
             <h2>10. Cookies</h2>
             <p>
-              Notre site n'utilise actuellement <strong>aucun cookie de tracking ou publicitaire</strong>.
+              Notre site n&apos;utilise actuellement <strong>aucun cookie de tracking ou publicitaire</strong>.
             </p>
             <p>
               Seuls des cookies techniques strictement nécessaires au fonctionnement du site peuvent être utilisés.
@@ -169,7 +169,7 @@ export default function PolitiqueConfidentialitePage() {
           <section className={styles.legalSection}>
             <h2>11. Transfert de données hors UE</h2>
             <p>
-              Le service d'envoi d'emails (Resend) peut être hébergé hors de l'Union Européenne. 
+              Le service d&apos;envoi d&apos;emails (Resend) peut être hébergé hors de l&apos;Union Européenne. 
               Dans ce cas, vos données sont protégées par des garanties appropriées conformes au RGPD.
             </p>
           </section>
@@ -189,7 +189,7 @@ export default function PolitiqueConfidentialitePage() {
           <section className={styles.legalSection}>
             <h2>13. Contact</h2>
             <p>
-              Pour toute question concernant cette politique de confidentialité ou l'exercice de vos droits :
+              Pour toute question concernant cette politique de confidentialité ou l&apos;exercice de vos droits :
             </p>
             <ul>
               <li><strong>Email :</strong> contact@mds-digital.fr</li>

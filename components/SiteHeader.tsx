@@ -19,7 +19,8 @@ export default function SiteHeader() {
 
   // Ferme le menu quand on change de page
   useEffect(() => {
-    setIsMenuOpen(false);
+    // SetState asynchrone pour éviter cascading renders
+    setTimeout(() => setIsMenuOpen(false), 0);
   }, [pathname]);
 
   // Bloque le scroll quand le menu mobile est ouvert

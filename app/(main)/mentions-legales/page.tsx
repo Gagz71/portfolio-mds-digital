@@ -10,7 +10,7 @@ export default function MentionsLegalesPage() {
         <CyberFragments />
 
         <Link href="/accueil#top" className={styles.backLink}>
-          ← Retour à l'accueil
+          ← Retour à l&apos;accueil
         </Link>
 
         <h1 className={styles.legalTitle}>Mentions Légales</h1>
@@ -20,7 +20,7 @@ export default function MentionsLegalesPage() {
           <section className={styles.legalSection}>
             <h2>1. Éditeur du site</h2>
             <p>
-              Le site <strong>mds-digital.fr</strong> (ci-après "le Site") est édité par :
+              Le site <strong>mds-digital.fr</strong> (ci-après &quot;le Site&quot;) est édité par :
             </p>
             <ul>
               <li><strong>Raison sociale :</strong> MDS Digital</li>
@@ -46,12 +46,12 @@ export default function MentionsLegalesPage() {
             <h2>3. Propriété intellectuelle</h2>
             <p>
               L&apos;ensemble du contenu du Site (textes, images, graphismes, logo, icônes, sons, logiciels, etc.) 
-              est la propriété exclusive de MDS Digital, à l'exception des marques, logos ou contenus 
-              appartenant à d'autres sociétés partenaires ou auteurs.
+              est la propriété exclusive de MDS Digital, à l&apos;exception des marques, logos ou contenus 
+              appartenant à d&apos;autres sociétés partenaires ou auteurs.
             </p>
             <p>
               Toute reproduction, distribution, modification, adaptation, retransmission ou publication, 
-              même partielle, de ces différents éléments est strictement interdite sans l'accord exprès 
+              même partielle, de ces différents éléments est strictement interdite sans l&apos;accord exprès 
               par écrit de MDS Digital.
             </p>
           </section>
@@ -64,11 +64,11 @@ export default function MentionsLegalesPage() {
             </p>
             <p>
               Conformément à la loi « informatique et libertés » et au RGPD, vous pouvez exercer votre droit 
-              d'accès, de rectification, d'effacement et d'opposition aux données vous concernant en nous 
-              contactant à l'adresse : <strong>contact@mds-digital.fr</strong>
+              d&apos;accès, de rectification, d&apos;effacement et d&apos;opposition aux données vous concernant en nous 
+              contactant à l&apos;adresse : <strong>contact@mds-digital.fr</strong>
             </p>
             <p>
-              Pour plus d'informations, consultez notre{" "}
+              Pour plus d&apos;informations, consultez notre{" "}
               <Link href="/politique-confidentialite">Politique de Confidentialité</Link>.
             </p>
           </section>
@@ -76,7 +76,7 @@ export default function MentionsLegalesPage() {
           <section className={styles.legalSection}>
             <h2>5. Cookies</h2>
             <p>
-              Le Site n'utilise actuellement aucun cookie de tracking ou de publicité. 
+              Le Site n&apos;utilise actuellement aucun cookie de tracking ou de publicité. 
               Seuls des cookies techniques nécessaires au bon fonctionnement du site peuvent être utilisés.
             </p>
           </section>
@@ -84,8 +84,8 @@ export default function MentionsLegalesPage() {
           <section className={styles.legalSection}>
             <h2>6. Limitation de responsabilité</h2>
             <p>
-              MDS Digital s'efforce d'assurer l'exactitude et la mise à jour des informations diffusées sur ce Site. 
-              Toutefois, MDS Digital ne peut garantir l'exactitude, la précision ou l'exhaustivité des informations 
+              MDS Digital s&apos;efforce d&apos;assurer l&apos;exactitude et la mise à jour des informations diffusées sur ce Site. 
+              Toutefois, MDS Digital ne peut garantir l&apos;exactitude, la précision ou l&apos;exhaustivité des informations 
               mises à disposition sur ce Site.
             </p>
             <p>
@@ -98,14 +98,14 @@ export default function MentionsLegalesPage() {
             <h2>7. Loi applicable</h2>
             <p>
               Les présentes mentions légales sont régies par le droit français. 
-              Tout litige relatif à l'utilisation du Site sera soumis aux tribunaux compétents français.
+              Tout litige relatif à l&apos;utilisation du Site sera soumis aux tribunaux compétents français.
             </p>
           </section>
 
           <section className={styles.legalSection}>
             <h2>8. Contact</h2>
             <p>
-              Pour toute question ou demande d'information concernant le Site, vous pouvez nous contacter :
+              Pour toute question ou demande d&apos;information concernant le Site, vous pouvez nous contacter :
             </p>
             <ul>
               <li><strong>Email :</strong> contact@mds-digital.fr</li>

@@ -1,12 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { Resend } from 'resend';
-
-const resend = new Resend(process.env.RESEND_API_KEY);
+import nodemailer from 'nodemailer';
 
 export async function POST(request: NextRequest) {
   try {
     console.log('🔵 Route API contact appelée');
-    console.log('🔑 Clé Resend:', process.env.RESEND_API_KEY ? 'Présente ✅' : 'MANQUANTE ❌');
     
     const body = await request.json();
     const { name, email, message } = body;
@@ -50,17 +47,30 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    console.log('📧 Envoi email via Resend...');
+    console.log('📧 Configuration transporteur Nodemailer...');
 
-    // Envoyer l'email
-    const data = await resend.emails.send({
-      from: 'Contact Portfolio <onboarding@resend.dev>',
-      to: 'dbmanhs@outlook.fr',
-      replyTo: email,
+    // Configuration du transporteur SMTP OVH
+    const transporter = nodemailer.createTransport({
+      host: process.env.SMTP_HOST,
+      port: Number(process.env.SMTP_PORT),
+      secure: process.env.SMTP_PORT === '465', // true pour 465, false pour 587
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
+      },
+    });
+
+    console.log('📨 Envoi de l\'email...');
+
+    // Envoi de l'email
+    await transporter.sendMail({
+      from: `"${name}" <${process.env.SMTP_USER}>`, // Expéditeur
+      to: process.env.EMAIL_TO, // Destinataire
+      replyTo: email, // Email du visiteur pour répondre
       subject: `Nouveau message de ${name} via le portfolio`,
       html: `
-        <div style="font-family: BlenderProBook; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: rgba(23, 169, 206, 0.86); text-transform: uppercase;">Nouveau message depuis ton portfolio</h2>
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+          <h2 style="color: #00ffd2; text-transform: uppercase;">Nouveau message depuis ton portfolio</h2>
           
           <div style="background: #f5f5f5; padding: 20px; border-radius: 8px; margin: 20px 0;">
             <p style="margin: 0 0 10px 0;"><strong>Nom :</strong> ${name}</p>
@@ -73,16 +83,16 @@ export async function POST(request: NextRequest) {
           </div>
           
           <p style="color: #888; font-size: 12px; margin-top: 20px;">
-            Ce message a été envoyé depuis le formulaire de contact de ton portfolio.
+            Ce message a été envoyé depuis le formulaire de contact de mds-digital.fr
           </p>
         </div>
       `,
     });
 
-    console.log('✅ Email envoyé avec succès:', data);
+    console.log('✅ Email envoyé avec succès');
 
     return NextResponse.json(
-      { message: 'Email envoyé avec succès', data },
+      { message: 'Email envoyé avec succès' },
       { status: 200 }
     );
   } catch (error) {

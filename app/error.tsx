@@ -130,16 +130,16 @@ export default function Error500() {
           {/* Message */}
           <h1 className={styles.title}>ERREUR SERVEUR</h1>
           <p className={styles.message}>
-            Une erreur interne s'est produite. Nos systèmes travaillent à la résolution du problème.
+            Une erreur interne s&apos;est produite. Nos systèmes travaillent à la résolution du problème.
           </p>
 
           {/* Actions */}
           <div className={styles.actions}>
             <Link href="/accueil" className={styles.btnPrimary}>
-              ← RETOUR À L'ACCUEIL
+              ← RETOUR À L&apos;ACCUEIL
             </Link>
             <Link href="/accueil#contact" className={styles.btnGhost}>
-              SIGNALER L'ERREUR
+              SIGNALER L&apos;ERREUR
             </Link>
           </div>
         </div>

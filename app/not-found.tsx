@@ -119,13 +119,13 @@ export default function NotFound() {
           {/* Message */}
           <h1 className={styles.title}>PAGE NON TROUVÉE</h1>
           <p className={styles.message}>
-            La page que vous recherchez n'existe pas ou a été déplacée.
+            La page que vous recherchez n&apos;existe pas ou a été déplacée.
           </p>
 
           {/* Actions */}
           <div className={styles.actions}>
             <Link href="/accueil#top" className={styles.btnPrimary}>
-              ← RETOUR À L'ACCUEIL
+              ← RETOUR À L&apos;ACCUEIL
             </Link>
           </div>
         </div>

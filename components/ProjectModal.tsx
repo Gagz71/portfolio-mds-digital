@@ -26,8 +26,8 @@ export default function ProjectModal({
   useEffect(() => {
     if (!isOpen) return;
 
-    // Reset index au montage de la modal
-    setCurrentIndex(0);
+    // Reset index de manière asynchrone pour éviter cascading renders
+    setTimeout(() => setCurrentIndex(0), 0);
 
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -65,7 +65,7 @@ export default function ProjectModal({
     return () => {
       document.removeEventListener("keydown", handleArrows);
     };
-  }, [isOpen, currentIndex]);
+  }, [isOpen, currentIndex, goToNext, goToPrevious]);
 
   // Fermeture au clic extérieur
   useEffect(() => {
