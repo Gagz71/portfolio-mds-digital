@@ -31,7 +31,7 @@ export const SERVICES = [
     description:
       "Support technique, mises à jour de sécurité, optimisations performances, corrections de bugs et ajout de fonctionnalités. Votre solution reste performante dans le temps. Accompagnement sur le long terme avec interventions rapides si besoin.",
   },
-] as const;
+];
 
 export const TECHNOS = [
   "Next.js",
@@ -42,7 +42,7 @@ export const TECHNOS = [
   "MySQL",
   "MongoDB",
   "Stripe",
-] as const;
+];
 
 export const PROJETS = [
   {
@@ -114,4 +114,4 @@ export const PROJETS = [
       "/projets/kaamelott-chat/mobile_perceval.png",
     ],
   },
-] as const;
+];
