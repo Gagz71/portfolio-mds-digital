@@ -131,10 +131,10 @@ export default function MatrixRain({
 
       width = fullscreen
         ? window.innerWidth
-        : canvas.clientWidth || window.innerWidth; // largeur
+        : canvas?.clientWidth || window.innerWidth; // largeur
       height = fullscreen
         ? window.innerHeight
-        : canvas.clientHeight || window.innerHeight; // hauteur
+        : canvas?.clientHeight || window.innerHeight; // hauteur
 
       canvas.width = Math.floor(width * dpr); // résolution réelle
       canvas.height = Math.floor(height * dpr); // résolution réelle
@@ -366,6 +366,7 @@ export default function MatrixRain({
     fullscreen,
     fgRgb,
     bgRgb,
+    spawnAfterRows,
   ]); // fin useEffect deps
 
   return (
