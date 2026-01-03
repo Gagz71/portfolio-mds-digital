@@ -409,7 +409,7 @@
 .projectImage {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   transition: transform 0.5s ease;
 }
 
@@ -462,6 +462,16 @@
 .projectCard:hover .projectBadge {
   opacity: 1;
   transform: translate(-50%, -50%) scale(1);
+}
+
+/* Sur mobile/tablette, badge toujours visible */
+@media (max-width: 1024px) {
+  .projectBadge {
+    opacity: 0.95;
+    transform: translate(-50%, -50%) scale(1);
+    font-size: 13px;
+    padding: 10px 20px;
+  }
 }
 
 /* Content section */

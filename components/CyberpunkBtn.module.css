@@ -60,7 +60,7 @@
 .btnOutline::after {
   content: "";
   position: absolute;
-  inset: 2px; /* ✅ laisse apparaître le contour */
+  inset: 0px; /* ✅ laisse apparaître le contour */
   background-color: #02091a;
   z-index: -1;
   transition: all 0.3s;

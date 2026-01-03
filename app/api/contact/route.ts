@@ -5,6 +5,9 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: NextRequest) {
   try {
+    console.log('🔵 Route API contact appelée');
+    console.log('🔑 Clé Resend:', process.env.RESEND_API_KEY ? 'Présente ✅' : 'MANQUANTE ❌');
+    
     const body = await request.json();
     const { name, email, message } = body;
 
@@ -47,11 +50,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    console.log('📧 Envoi email via Resend...');
+
     // Envoyer l'email
     const data = await resend.emails.send({
-      from: 'Contact Portfolio <onboarding@resend.dev>', // Email par défaut de Resend (tu pourras le changer avec ton domaine)
-      to: 'dbmanhs@outlook.fr', // ← REMPLACE PAR TON EMAIL !
-      replyTo: email, // L'email du visiteur pour que tu puisses répondre
+      from: 'Contact Portfolio <onboarding@resend.dev>',
+      to: 'dbmanhs@outlook.fr',
+      replyTo: email,
       subject: `Nouveau message de ${name} via le portfolio`,
       html: `
         <div style="font-family: BlenderProBook; max-width: 600px; margin: 0 auto;">
@@ -74,12 +79,14 @@ export async function POST(request: NextRequest) {
       `,
     });
 
+    console.log('✅ Email envoyé avec succès:', data);
+
     return NextResponse.json(
       { message: 'Email envoyé avec succès', data },
       { status: 200 }
     );
   } catch (error) {
-    console.error('Erreur lors de l\'envoi de l\'email:', error);
+    console.error('❌ Erreur lors de l\'envoi de l\'email:', error);
     return NextResponse.json(
       { error: 'Erreur lors de l\'envoi de l\'email' },
       { status: 500 }

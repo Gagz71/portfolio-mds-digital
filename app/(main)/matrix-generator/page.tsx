@@ -45,15 +45,14 @@ const DEFAULT: Config = {
 
 export default function MatrixGeneratorPage() {
   const [cfg, setCfg] = useState<Config>(DEFAULT);
-  const [isOpen, setIsOpen] = useState(true); // État pour le toggle
+  const [isOpen, setIsOpen] = useState(true);
 
-  // On nettoie le message (pour éviter caractères chelous)
   const cleanedMessage = useMemo(() => {
     return cfg.message
       .toUpperCase()
       .replace(/[^A-Z0-9 ]/g, "")
       .slice(0, 30)
-      .replaceAll(" ", ""); // vertical plus propre
+      .replaceAll(" ", "");
   }, [cfg.message]);
 
   return (
@@ -77,13 +76,13 @@ export default function MatrixGeneratorPage() {
         trailDecay={cfg.trailDecay}
       />
 
-      {/* BOUTON TOGGLE */}
+      {/* BOUTON TOGGLE - RESPONSIVE */}
       <button
         onClick={() => setIsOpen(!isOpen)}
+        className="matrix-toggle-btn"
         style={{
           position: "fixed",
-          top: 120, // Sous le menu
-          left: isOpen ? 700 : 20, // Se déplace avec le panneau
+          top: 120,
           zIndex: 3,
           width: 44,
           height: 44,
@@ -97,7 +96,7 @@ export default function MatrixGeneratorPage() {
           alignItems: "center",
           justifyContent: "center",
           boxShadow: "0 0 20px rgba(0,255,0,0.3)",
-          transition: "left 0.3s ease, transform 0.2s ease",
+          transition: "all 0.3s ease",
         }}
         onMouseEnter={(e) => e.currentTarget.style.transform = "scale(1.1)"}
         onMouseLeave={(e) => e.currentTarget.style.transform = "scale(1)"}
@@ -105,20 +104,21 @@ export default function MatrixGeneratorPage() {
         {isOpen ? "❌" : "⚙️"}
       </button>
 
-      {/* UI - Panneau avec scroll, commence SOUS le menu */}
-      <div style={{ 
-        position: "fixed",
-        left: isOpen ? 0 : -700, // Slide depuis la gauche
-        top: 100, // COMMENCE SOUS LE MENU
-        bottom: 0,
-        zIndex: 2, 
-        padding: 16, 
-        maxWidth: 680,
-        transition: "left 0.3s ease",
-        overflowY: "auto", // Scroll si besoin
-        overflowX: "hidden",
-      }}>
-        <Panel title="Matrix Generator (live)" subtitle="Amusez-vous à configurer la Matrice">
+      {/* UI - Panneau RESPONSIVE */}
+      <div 
+        className="matrix-panel"
+        style={{ 
+          position: "fixed",
+          top: 100,
+          bottom: 0,
+          zIndex: 2, 
+          padding: 16,
+          transition: "left 0.3s ease, transform 0.3s ease",
+          overflowY: "auto",
+          overflowX: "hidden",
+        }}
+      >
+        <Panel title="Générateur Matrix" subtitle="Amusez-vous à configurer la Matrice">
           <Row>
             <label style={label()}>
               Texte (max 30)
@@ -187,6 +187,46 @@ export default function MatrixGeneratorPage() {
 
         </Panel>
       </div>
+
+      {/* CSS RESPONSIVE */}
+      <style jsx>{`
+        /* Desktop */
+        .matrix-toggle-btn {
+          left: ${isOpen ? '700px' : '20px'};
+        }
+
+        .matrix-panel {
+          left: ${isOpen ? '0' : '-700px'};
+          width: 680px;
+          max-width: 680px;
+        }
+
+        /* Tablette */
+        @media (max-width: 1024px) {
+          .matrix-toggle-btn {
+            left: ${isOpen ? 'calc(100vw - 64px)' : '20px'} !important;
+          }
+
+          .matrix-panel {
+            left: ${isOpen ? '0' : '-100vw'} !important;
+            width: 100vw !important;
+            max-width: 100vw !important;
+          }
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+          .matrix-toggle-btn {
+            top: 80px !important;
+            left: ${isOpen ? 'calc(100vw - 64px)' : '10px'} !important;
+          }
+
+          .matrix-panel {
+            top: 70px !important;
+            padding: 12px !important;
+          }
+        }
+      `}</style>
     </main>
   );
 }

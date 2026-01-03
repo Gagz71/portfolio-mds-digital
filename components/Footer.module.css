@@ -233,15 +233,18 @@
     justify-content: flex-start;
   }
 
+  /* footerBottom RESTE en row (côte à côte) */
   .footerBottom {
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: flex-start;
     gap: 1.5rem;
   }
 
+  /* legalSection à droite, aligné à droite */
   .legalSection {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: flex-end;
     gap: 0.5rem;
   }
 }
@@ -255,6 +258,7 @@
     font-size: 0.8rem;
   }
 
+  /* Navigation en colonne sur mobile */
   .footerNav {
     flex-direction: column;
     align-items: flex-start;
@@ -265,9 +269,14 @@
     display: none;
   }
 
+  /* Legal en colonne, aligné à droite */
+  .legalSection {
+    align-items: flex-end;
+  }
+
   .legalNav {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: flex-end;
     gap: 0.5rem;
   }
 
@@ -289,5 +298,14 @@
   .socialIcon svg {
     width: 16px;
     height: 16px;
+  }
+
+  .footerBottom {
+    gap: 1rem;
+  }
+
+  .footerNav,
+  .legalSection {
+    font-size: 0.8rem;
   }
 }

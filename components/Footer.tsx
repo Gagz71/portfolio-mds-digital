@@ -11,7 +11,7 @@ export default function Footer() {
         {/* Ligne 1 - (Logo + Tagline) à gauche, Icônes sociales à droite */}
         <div className={styles.footerTop}>
           <div className={styles.brandSection}>
-            <Link href="/" className={styles.logoLink}>
+            <Link href="/accueil#top" className={styles.logoLink}>
               <Image
                 src="/brand/logo-mds-panel.svg"
                 alt="MDS Digital"
