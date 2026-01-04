@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
+import GoogleAnalytics from '../components/GoogleAnalytics'
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -53,6 +54,11 @@ export const metadata: Metadata = {
     "MDS Digital conçoit des solutions web & mobiles sur-mesure pour gagner en visibilité et en efficacité. Sites modernes, applications intuitives, outils concrets : du propre, du rapide, du maintenable.",
   keywords: [
     "développement web",
+    'développeur web',
+    'développeur mobile',
+    'développeur full-stack',
+    "développement sur-mesure",
+    "application sur-mesure",
     "création site internet",
     "application web",
     "Next.js",
@@ -60,8 +66,14 @@ export const metadata: Metadata = {
     "freelance développeur",
     "Mâcon",
     "Bourgogne",
+    'freelance', 
+    'React Native', 
+    'TypeScript', 
+    'e-commerce', 
+    'Symfony', 
+    'Node.js'
   ],
-  authors: [{ name: "Dounia Manhouli", url: "https://mds-digital.fr" }],
+  authors: [{ name: "Dounia Manhouli - MDS Digital", url: "https://mds-digital.fr" }],
   creator: "MDS Digital",
   publisher: "MDS Digital",
   openGraph: {
@@ -73,12 +85,12 @@ export const metadata: Metadata = {
       "Solutions web & mobiles sur-mesure pour gagner en visibilité et en efficacité.",
     siteName: "MDS Digital",
     images: [
-      {
-        url: "/icon-512.png",
-        width: 512,
-        height: 512,
-        alt: "MDS Digital Logo",
-      },
+       {
+    url: 'https://mds-digital.fr/brand/logo-mds-panel.png',
+    width: 1200,
+    height: 630,
+    alt: 'MDS Digital - Solutions Web Sur-Mesure'
+  }
     ],
   },
   twitter: {
@@ -97,10 +109,21 @@ export const metadata: Metadata = {
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
   },
   manifest: "/site.webmanifest",
+   // Robots
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
+  verification: {
+    google: 'ton-code-verification-google'
+  }
 };
 
 export default function RootLayout({
@@ -113,6 +136,30 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${blenderProBook.variable} ${orbitronBlack.variable} ${deltha.variable} ${orbitronRegular.variable} ${orbitronMedium.variable} ${orbitronSemiBold.variable} antialiased`}
       >
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID!} />
+        {/* Schema.org pour Google */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'ProfessionalService',
+              name: 'MDS Digital',
+              description: 'MDS Digital - Solutions Web Sur-Mesure',
+              url: 'https://mds-digital.fr',
+              telephone: '+33-6-95-69-55-03', // Ajoute ton numéro si tu veux
+              email: 'contact@mds-digital.fr',
+              address: {
+                '@type': 'PostalAddress',
+                addressCountry: 'FR',
+              },
+              sameAs: [
+                'https://github.com/Gagz71',
+                // Ajoute LinkedIn, etc. si tu as
+              ],
+            }),
+          }}
+        />
         {children}
       </body>
     </html>
