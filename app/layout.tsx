@@ -122,7 +122,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: 'ton-code-verification-google'
+    google: 'cAuxjtTNk4zH_Iju0k1U_AElroUhkmqr2UVdNU6a-ck'
   }
 };
 
