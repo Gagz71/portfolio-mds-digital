@@ -71,7 +71,7 @@ export async function POST(request: NextRequest) {
       <!-- Header -->
       <div style="background: linear-gradient(135deg, #001a14 0%, #000810 100%); padding: 25px 30px; border-bottom: 2px solid #00ffd2;">
         <h2 style="color: #00ffd2; text-transform: uppercase; margin: 0; font-size: 22px; letter-spacing: 3px; text-shadow: 0 0 15px rgba(0, 255, 210, 0.6);">
-          ⚡ NOUVEAU MESSAGE
+          NOUVEAU MESSAGE
         </h2>
       </div>
       
