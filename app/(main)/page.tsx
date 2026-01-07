@@ -65,7 +65,7 @@ export default function Home() {
             transition: "opacity 500ms ease",
           }}
         >
-          <CyberpunkBtn label="SE CONNECTER" onClick={openWindow} />
+          <CyberpunkBtn label="ACCEDER" onClick={openWindow} />
         </div>
       )}
 

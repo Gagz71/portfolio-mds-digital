@@ -163,18 +163,6 @@ export default function MatrixRain({
           Array.from({ length: rows }, () => 0) // tout à 0 au départ
       );
 
-      // ✅ AU DÉBUT : toutes les colonnes commencent en haut (0)
-      //   drop = Array.from({ length: cols }, () => 0);
-
-      //   // ✅ AU DÉBUT : aucune colonne n’a encore fait sa 1ère chute
-      //   firstFallDone = Array.from({ length: cols }, () => false);
-
-      //   activeCols = 0; // au début : 0 colonne active (pour apparition progressive)
-
-      //   msgCol = Math.floor(cols * 0.5); // message au milieu
-      //   msgStartRow = Math.max(2, Math.floor(rows * 0.18)); // start message
-      //   lastMsgHop = performance.now(); // init hop timer
-
       drop = Array.from({ length: cols }, () => 0);
       firstFallDone = Array.from({ length: cols }, () => false); // si tu l'as déjà ajouté auparavant
       order = shuffledOrder(cols); // ✅ ordre random pour la 1ère apparition
